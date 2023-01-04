@@ -15,6 +15,7 @@
 		A5E1DCB32965DD5A000BFC80 /* swish_delivererUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1DCB22965DD5A000BFC80 /* swish_delivererUITestsLaunchTests.swift */; };
 		A5E1DCC12965DDA6000BFC80 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1DCBF2965DDA6000BFC80 /* HomeViewController.swift */; };
 		A5E1DCC22965DDA6000BFC80 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E1DCC02965DDA6000BFC80 /* HomeViewController.xib */; };
+		A5E1DCC82965E985000BFC80 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5E1DCCA2965E985000BFC80 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,9 @@
 		A5E1DCB22965DD5A000BFC80 /* swish_delivererUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swish_delivererUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		A5E1DCBF2965DDA6000BFC80 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		A5E1DCC02965DDA6000BFC80 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		A5E1DCC92965E985000BFC80 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A5E1DCCB2965E9BB000BFC80 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A5E1DCCC2965E9EA000BFC80 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +107,7 @@
 				A5E1DC9D2965DD5A000BFC80 /* Info.plist */,
 				A5E1DCBF2965DDA6000BFC80 /* HomeViewController.swift */,
 				A5E1DCC02965DDA6000BFC80 /* HomeViewController.xib */,
+				A5E1DCCA2965E985000BFC80 /* Localizable.strings */,
 			);
 			path = "swish-deliverer";
 			sourceTree = "<group>";
@@ -210,6 +215,8 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
+				es,
 			);
 			mainGroup = A5E1DC832965DD59000BFC80;
 			productRefGroup = A5E1DC8D2965DD59000BFC80 /* Products */;
@@ -229,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5E1DC9C2965DD5A000BFC80 /* LaunchScreen.storyboard in Resources */,
+				A5E1DCC82965E985000BFC80 /* Localizable.strings in Resources */,
 				A5E1DC992965DD5A000BFC80 /* Assets.xcassets in Resources */,
 				A5E1DCC22965DDA6000BFC80 /* HomeViewController.xib in Resources */,
 			);
@@ -301,6 +309,16 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		A5E1DCCA2965E985000BFC80 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5E1DCC92965E985000BFC80 /* en */,
+				A5E1DCCB2965E9BB000BFC80 /* fr */,
+				A5E1DCCC2965E9EA000BFC80 /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -308,6 +326,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -368,6 +387,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
