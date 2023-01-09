@@ -1,1 +1,5 @@
-"login"="Login"
+"app_name" = "Swish";
+"sign_in" = "Sign in";
+"forgot_password" = "Forgot password ?";
+"login" = "Login";
+"password" = "Password";

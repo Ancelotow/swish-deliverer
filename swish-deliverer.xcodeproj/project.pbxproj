@@ -13,9 +13,15 @@
 		A5E1DCA72965DD5A000BFC80 /* swish_delivererTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1DCA62965DD5A000BFC80 /* swish_delivererTests.swift */; };
 		A5E1DCB12965DD5A000BFC80 /* swish_delivererUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1DCB02965DD5A000BFC80 /* swish_delivererUITests.swift */; };
 		A5E1DCB32965DD5A000BFC80 /* swish_delivererUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1DCB22965DD5A000BFC80 /* swish_delivererUITestsLaunchTests.swift */; };
-		A5E1DCC12965DDA6000BFC80 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1DCBF2965DDA6000BFC80 /* HomeViewController.swift */; };
-		A5E1DCC22965DDA6000BFC80 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E1DCC02965DDA6000BFC80 /* HomeViewController.xib */; };
 		A5E1DCC82965E985000BFC80 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A5E1DCCA2965E985000BFC80 /* Localizable.strings */; };
+		A5E1DCD42965EBE0000BFC80 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1DCD32965EBE0000BFC80 /* Session.swift */; };
+		A5E1DCDD2966248A000BFC80 /* LocalizedStringKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1DCDC2966248A000BFC80 /* LocalizedStringKeys.swift */; };
+		A5E1DCE029662CBE000BFC80 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1DCDE29662CBE000BFC80 /* HomeViewController.swift */; };
+		A5E1DCE129662CBE000BFC80 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E1DCDF29662CBE000BFC80 /* HomeViewController.xib */; };
+		A5E1DCE4296633AF000BFC80 /* ConnectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1DCE3296633AF000BFC80 /* ConnectionService.swift */; };
+		A5E1DCE72966376F000BFC80 /* SessionKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1DCE62966376F000BFC80 /* SessionKeys.swift */; };
+		A5E1DCEC296CAEE1000BFC80 /* ConnectionDbService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1DCEB296CAEE1000BFC80 /* ConnectionDbService.swift */; };
+		A5E1DCEE296CB2D4000BFC80 /* AppInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1DCED296CB2D4000BFC80 /* AppInstance.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,11 +52,17 @@
 		A5E1DCAC2965DD5A000BFC80 /* swish-delivererUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "swish-delivererUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5E1DCB02965DD5A000BFC80 /* swish_delivererUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swish_delivererUITests.swift; sourceTree = "<group>"; };
 		A5E1DCB22965DD5A000BFC80 /* swish_delivererUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = swish_delivererUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		A5E1DCBF2965DDA6000BFC80 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		A5E1DCC02965DDA6000BFC80 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		A5E1DCC92965E985000BFC80 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A5E1DCCB2965E9BB000BFC80 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A5E1DCCC2965E9EA000BFC80 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A5E1DCD32965EBE0000BFC80 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
+		A5E1DCDC2966248A000BFC80 /* LocalizedStringKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStringKeys.swift; sourceTree = "<group>"; };
+		A5E1DCDE29662CBE000BFC80 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		A5E1DCDF29662CBE000BFC80 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		A5E1DCE3296633AF000BFC80 /* ConnectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionService.swift; sourceTree = "<group>"; };
+		A5E1DCE62966376F000BFC80 /* SessionKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionKeys.swift; sourceTree = "<group>"; };
+		A5E1DCEB296CAEE1000BFC80 /* ConnectionDbService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionDbService.swift; sourceTree = "<group>"; };
+		A5E1DCED296CB2D4000BFC80 /* AppInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInstance.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,13 +113,15 @@
 		A5E1DC8E2965DD59000BFC80 /* swish-deliverer */ = {
 			isa = PBXGroup;
 			children = (
+				A5E1DCD12965EBBB000BFC80 /* Platforms */,
+				A5E1DCD02965EBA9000BFC80 /* Models */,
 				A5E1DC8F2965DD59000BFC80 /* AppDelegate.swift */,
 				A5E1DC982965DD5A000BFC80 /* Assets.xcassets */,
 				A5E1DC9A2965DD5A000BFC80 /* LaunchScreen.storyboard */,
 				A5E1DC9D2965DD5A000BFC80 /* Info.plist */,
-				A5E1DCBF2965DDA6000BFC80 /* HomeViewController.swift */,
-				A5E1DCC02965DDA6000BFC80 /* HomeViewController.xib */,
 				A5E1DCCA2965E985000BFC80 /* Localizable.strings */,
+				A5E1DCDE29662CBE000BFC80 /* HomeViewController.swift */,
+				A5E1DCDF29662CBE000BFC80 /* HomeViewController.xib */,
 			);
 			path = "swish-deliverer";
 			sourceTree = "<group>";
@@ -127,6 +141,66 @@
 				A5E1DCB22965DD5A000BFC80 /* swish_delivererUITestsLaunchTests.swift */,
 			);
 			path = "swish-delivererUITests";
+			sourceTree = "<group>";
+		};
+		A5E1DCD02965EBA9000BFC80 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A5E1DCE529663755000BFC80 /* Enums */,
+				A5E1DCE229663399000BFC80 /* Services */,
+				A5E1DCD52965ECC9000BFC80 /* Entities */,
+				A5E1DCD32965EBE0000BFC80 /* Session.swift */,
+				A5E1DCED296CB2D4000BFC80 /* AppInstance.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A5E1DCD12965EBBB000BFC80 /* Platforms */ = {
+			isa = PBXGroup;
+			children = (
+				A5E1DCEA296CAE60000BFC80 /* Database */,
+				A5E1DCD22965EBC3000BFC80 /* JSON */,
+			);
+			path = Platforms;
+			sourceTree = "<group>";
+		};
+		A5E1DCD22965EBC3000BFC80 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		A5E1DCD52965ECC9000BFC80 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		A5E1DCE229663399000BFC80 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A5E1DCE3296633AF000BFC80 /* ConnectionService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		A5E1DCE529663755000BFC80 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				A5E1DCDC2966248A000BFC80 /* LocalizedStringKeys.swift */,
+				A5E1DCE62966376F000BFC80 /* SessionKeys.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		A5E1DCEA296CAE60000BFC80 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				A5E1DCEB296CAEE1000BFC80 /* ConnectionDbService.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,7 +312,7 @@
 				A5E1DC9C2965DD5A000BFC80 /* LaunchScreen.storyboard in Resources */,
 				A5E1DCC82965E985000BFC80 /* Localizable.strings in Resources */,
 				A5E1DC992965DD5A000BFC80 /* Assets.xcassets in Resources */,
-				A5E1DCC22965DDA6000BFC80 /* HomeViewController.xib in Resources */,
+				A5E1DCE129662CBE000BFC80 /* HomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,8 +337,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5E1DCEE296CB2D4000BFC80 /* AppInstance.swift in Sources */,
+				A5E1DCE72966376F000BFC80 /* SessionKeys.swift in Sources */,
 				A5E1DC902965DD59000BFC80 /* AppDelegate.swift in Sources */,
-				A5E1DCC12965DDA6000BFC80 /* HomeViewController.swift in Sources */,
+				A5E1DCE4296633AF000BFC80 /* ConnectionService.swift in Sources */,
+				A5E1DCDD2966248A000BFC80 /* LocalizedStringKeys.swift in Sources */,
+				A5E1DCD42965EBE0000BFC80 /* Session.swift in Sources */,
+				A5E1DCEC296CAEE1000BFC80 /* ConnectionDbService.swift in Sources */,
+				A5E1DCE029662CBE000BFC80 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

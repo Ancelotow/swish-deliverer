@@ -1,1 +1,5 @@
-"login"="Acceso"
+"app_name" = "Swish";
+"sign_in" = "Acceso";
+"forgot_password" = "Contraseña olvidada ?";
+"login" = "Identificador";
+"password" = "Contraseña";
