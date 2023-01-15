@@ -31,13 +31,16 @@ class HomeViewController: UIViewController {
     }
     
     func showErrorAlertWithMessage(_ message: String) {
-        let alert = UIAlertController(title: "Invalide", message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Fermer", style: .cancel))
+        let title = NSLocalizedString(LocalizedStringKeys.invalid.rawValue, comment: "")
+        let closeTitle = NSLocalizedString(LocalizedStringKeys.close.rawValue, comment: "")
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: closeTitle, style: .cancel))
         self.present(alert, animated: true)
     }
     
     func showLoadingAlert() {
-        self.loadingAlert = UIAlertController(title: nil, message: "Connexion...", preferredStyle: .alert)
+        let connectionMsg = NSLocalizedString(LocalizedStringKeys.connection_loding.rawValue, comment: "")
+        self.loadingAlert = UIAlertController(title: nil, message: connectionMsg, preferredStyle: .alert)
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.style = UIActivityIndicatorView.Style.medium
@@ -58,7 +61,8 @@ class HomeViewController: UIViewController {
         guard let login = loginTextField.text,
               let password = passwordTextField.text,
               !login.isEmpty, !password.isEmpty  else {
-            self.showErrorAlertWithMessage("L'identifiant et le mot de passes sont obligatoires")
+            let errMsg = NSLocalizedString(LocalizedStringKeys.logins_required.rawValue, comment: "")
+            self.showErrorAlertWithMessage(errMsg)
             return
         }
         self.showLoadingAlert()
@@ -66,7 +70,8 @@ class HomeViewController: UIViewController {
             guard err == nil else {
                 DispatchQueue.main.async {
                     self.dismissLoadingAlert() {
-                        let message = (err as? NSError)?.localizedFailureReason ?? "Erreur inconnue"
+                        let unknowErr = NSLocalizedString(LocalizedStringKeys.unknow_error.rawValue, comment: "")
+                        let message = (err as? NSError)?.localizedFailureReason ?? unknowErr
                         self.showErrorAlertWithMessage(message)
                     }
                 }
@@ -74,7 +79,7 @@ class HomeViewController: UIViewController {
             }
             DispatchQueue.main.async {
                 self.dismissLoadingAlert() {
-                    print(Session.getSession()!.firstname)
+                    self.navigationController?.pushViewController(TourViewController(), animated: true)
                 }
             }
         }

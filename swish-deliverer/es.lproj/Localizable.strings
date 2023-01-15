@@ -3,3 +3,15 @@
 "forgot_password" = "Contraseña olvidada ?";
 "login" = "Identificador";
 "password" = "Contraseña";
+"no_data_found" = "Datos no encontrados";
+"invalid_format" = "Formato inválido";
+"session_cannot_open" = "No se pudo abrir la sesión de inicio de sesión";
+"no_tour_found" = "No se encontró ningún recorrido";
+"no_response_found" = "No se encontró respuesta";
+"no_login_token" = "No tienes un token de inicio de sesión";
+"my_parcels" = "Mis paquetes";
+"invalid" = "Inválido";
+"close" = "Cerca";
+"connection_loding" = "Conexión...";
+"logins_required" = "Se requiere nombre de usuario y contraseña";
+"unknow_error" = "Error desconocido";

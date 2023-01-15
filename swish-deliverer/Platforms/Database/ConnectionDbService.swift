@@ -25,7 +25,7 @@ class ConnectionDbService: ConnectionService {
             }
             guard let httpResponse = response as? HTTPURLResponse else {
                 completion(nil, NSError(domain: AppInstance.getInstance().idBundle, code: 2, userInfo: [
-                    NSLocalizedFailureReasonErrorKey: "No data found"
+                    NSLocalizedFailureReasonErrorKey: NSLocalizedString(LocalizedStringKeys.no_data_found.rawValue, comment: "")
                 ]))
                 return
             }
@@ -37,7 +37,7 @@ class ConnectionDbService: ConnectionService {
             }
             guard let d = data else {
                 completion(nil, NSError(domain: AppInstance.getInstance().idBundle, code: 2, userInfo: [
-                    NSLocalizedFailureReasonErrorKey: "No data found"
+                    NSLocalizedFailureReasonErrorKey: NSLocalizedString(LocalizedStringKeys.no_data_found.rawValue, comment: "")
                 ]))
                 return
             }
@@ -45,13 +45,13 @@ class ConnectionDbService: ConnectionService {
                 let json = try JSONSerialization.jsonObject(with: d, options: .allowFragments)
                 guard let dict = json as? [String: Any] else {
                     completion(nil, NSError(domain: AppInstance.getInstance().idBundle, code: 3, userInfo: [
-                        NSLocalizedFailureReasonErrorKey: "Invalid format"
+                        NSLocalizedFailureReasonErrorKey: NSLocalizedString(LocalizedStringKeys.invalid_format.rawValue, comment: "")
                     ]))
                     return
                 }
                 guard Session.open(dict: dict) else {
                     completion(nil, NSError(domain: AppInstance.getInstance().idBundle, code: 3, userInfo: [
-                        NSLocalizedFailureReasonErrorKey: "La session de connexion n'as pas pu être ouverte"
+                        NSLocalizedFailureReasonErrorKey: NSLocalizedString(LocalizedStringKeys.session_cannot_open.rawValue, comment: "")
                     ]))
                     return
                 }

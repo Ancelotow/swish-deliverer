@@ -3,3 +3,15 @@
 "forgot_password" = "Mot de passe oublié ?";
 "login" = "Identifiant";
 "password" = "Mot de passe";
+"no_data_found" = "Aucune donnée trouvée";
+"invalid_format" = "Format invalide";
+"session_cannot_open" = "La session de connexion n'a pas pu être ouverte";
+"no_tour_found" = "Aucun tour trouvé";
+"no_response_found" = "Aucune response trouvée";
+"no_login_token" = "Vous n'avez pas de session de connexion";
+"my_parcels" = "Mes livraisons";
+"invalid" = "Invalide";
+"close" = "Fermer";
+"connection_loding" = "Connexion...";
+"logins_required" = "L'identifiant et le mot de passes sont obligatoires";
+"unknow_error" = "Erreur inconnue";
