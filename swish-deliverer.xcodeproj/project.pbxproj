@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A57CEC89298D5ED90045D5EB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A53C62282974B0E000AC4F1D /* Info.plist */; };
 		A5B69D572974289F00157B92 /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B69D562974289F00157B92 /* DateConverter.swift */; };
+		A5C66A0229A0F6AC007AAE28 /* ApiCaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C66A0129A0F6AC007AAE28 /* ApiCaller.swift */; };
+		A5C66A0729A0F9F6007AAE28 /* HttpMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C66A0629A0F9F6007AAE28 /* HttpMethod.swift */; };
+		A5C66A0C29A10D09007AAE28 /* ParcelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C66A0A29A10D09007AAE28 /* ParcelTableViewCell.swift */; };
+		A5C66A0D29A10D09007AAE28 /* ParcelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5C66A0B29A10D09007AAE28 /* ParcelTableViewCell.xib */; };
 		A5E1DC902965DD59000BFC80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1DC8F2965DD59000BFC80 /* AppDelegate.swift */; };
 		A5E1DC992965DD5A000BFC80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5E1DC982965DD5A000BFC80 /* Assets.xcassets */; };
 		A5E1DC9C2965DD5A000BFC80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5E1DC9A2965DD5A000BFC80 /* LaunchScreen.storyboard */; };
@@ -21,7 +26,7 @@
 		A5E1DCE129662CBE000BFC80 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E1DCDF29662CBE000BFC80 /* HomeViewController.xib */; };
 		A5E1DCE4296633AF000BFC80 /* ConnectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1DCE3296633AF000BFC80 /* ConnectionService.swift */; };
 		A5E1DCE72966376F000BFC80 /* SessionKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1DCE62966376F000BFC80 /* SessionKeys.swift */; };
-		A5E1DCEC296CAEE1000BFC80 /* ConnectionDbService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1DCEB296CAEE1000BFC80 /* ConnectionDbService.swift */; };
+		A5E1DCEC296CAEE1000BFC80 /* ConnectionApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1DCEB296CAEE1000BFC80 /* ConnectionApiService.swift */; };
 		A5E1DCEE296CB2D4000BFC80 /* AppInstance.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1DCED296CB2D4000BFC80 /* AppInstance.swift */; };
 		A5E1DCF1296CC62B000BFC80 /* TourViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1DCEF296CC62B000BFC80 /* TourViewController.swift */; };
 		A5E1DCF2296CC62B000BFC80 /* TourViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5E1DCF0296CC62B000BFC80 /* TourViewController.xib */; };
@@ -30,7 +35,7 @@
 		A5F6EA63296F514F000AA989 /* Parcel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F6EA62296F514F000AA989 /* Parcel.swift */; };
 		A5F6EA65296F527F000AA989 /* ParcelKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F6EA64296F527F000AA989 /* ParcelKeys.swift */; };
 		A5F6EA67296F53DF000AA989 /* TourKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F6EA66296F53DF000AA989 /* TourKeys.swift */; };
-		A5F6EA69296F56DA000AA989 /* TourDbService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F6EA68296F56DA000AA989 /* TourDbService.swift */; };
+		A5F6EA69296F56DA000AA989 /* TourApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F6EA68296F56DA000AA989 /* TourApiService.swift */; };
 		A5F6EA6B296F58CF000AA989 /* ErrorCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5F6EA6A296F58CF000AA989 /* ErrorCode.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,10 +57,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A53C62272974B0E000AC4F1D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = en; path = en.lproj/Info.plist; sourceTree = "<group>"; };
-		A53C62292974B0E600AC4F1D /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = fr; path = fr.lproj/Info.plist; sourceTree = "<group>"; };
-		A53C622A2974B0E800AC4F1D /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = es; path = es.lproj/Info.plist; sourceTree = "<group>"; };
+		A57CEC8A2990439C0045D5EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Base; path = Base.lproj/Info.plist; sourceTree = "<group>"; };
 		A5B69D562974289F00157B92 /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
+		A5C66A0129A0F6AC007AAE28 /* ApiCaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCaller.swift; sourceTree = "<group>"; };
+		A5C66A0629A0F9F6007AAE28 /* HttpMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpMethod.swift; sourceTree = "<group>"; };
+		A5C66A0A29A10D09007AAE28 /* ParcelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcelTableViewCell.swift; sourceTree = "<group>"; };
+		A5C66A0B29A10D09007AAE28 /* ParcelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParcelTableViewCell.xib; sourceTree = "<group>"; };
 		A5E1DC8C2965DD59000BFC80 /* swish-deliverer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swish-deliverer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5E1DC8F2965DD59000BFC80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5E1DC982965DD5A000BFC80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -74,7 +81,7 @@
 		A5E1DCDF29662CBE000BFC80 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		A5E1DCE3296633AF000BFC80 /* ConnectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionService.swift; sourceTree = "<group>"; };
 		A5E1DCE62966376F000BFC80 /* SessionKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionKeys.swift; sourceTree = "<group>"; };
-		A5E1DCEB296CAEE1000BFC80 /* ConnectionDbService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionDbService.swift; sourceTree = "<group>"; };
+		A5E1DCEB296CAEE1000BFC80 /* ConnectionApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionApiService.swift; sourceTree = "<group>"; };
 		A5E1DCED296CB2D4000BFC80 /* AppInstance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInstance.swift; sourceTree = "<group>"; };
 		A5E1DCEF296CC62B000BFC80 /* TourViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourViewController.swift; sourceTree = "<group>"; };
 		A5E1DCF0296CC62B000BFC80 /* TourViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TourViewController.xib; sourceTree = "<group>"; };
@@ -83,7 +90,7 @@
 		A5F6EA62296F514F000AA989 /* Parcel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parcel.swift; sourceTree = "<group>"; };
 		A5F6EA64296F527F000AA989 /* ParcelKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcelKeys.swift; sourceTree = "<group>"; };
 		A5F6EA66296F53DF000AA989 /* TourKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourKeys.swift; sourceTree = "<group>"; };
-		A5F6EA68296F56DA000AA989 /* TourDbService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourDbService.swift; sourceTree = "<group>"; };
+		A5F6EA68296F56DA000AA989 /* TourApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourApiService.swift; sourceTree = "<group>"; };
 		A5F6EA6A296F58CF000AA989 /* ErrorCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorCode.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -154,6 +161,8 @@
 				A5E1DCDF29662CBE000BFC80 /* HomeViewController.xib */,
 				A5E1DCEF296CC62B000BFC80 /* TourViewController.swift */,
 				A5E1DCF0296CC62B000BFC80 /* TourViewController.xib */,
+				A5C66A0A29A10D09007AAE28 /* ParcelTableViewCell.swift */,
+				A5C66A0B29A10D09007AAE28 /* ParcelTableViewCell.xib */,
 			);
 			path = "swish-deliverer";
 			sourceTree = "<group>";
@@ -191,7 +200,7 @@
 		A5E1DCD12965EBBB000BFC80 /* Platforms */ = {
 			isa = PBXGroup;
 			children = (
-				A5E1DCEA296CAE60000BFC80 /* Database */,
+				A5E1DCEA296CAE60000BFC80 /* API */,
 				A5E1DCD22965EBC3000BFC80 /* JSON */,
 			);
 			path = Platforms;
@@ -230,17 +239,19 @@
 				A5F6EA64296F527F000AA989 /* ParcelKeys.swift */,
 				A5F6EA66296F53DF000AA989 /* TourKeys.swift */,
 				A5F6EA6A296F58CF000AA989 /* ErrorCode.swift */,
+				A5C66A0629A0F9F6007AAE28 /* HttpMethod.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
 		};
-		A5E1DCEA296CAE60000BFC80 /* Database */ = {
+		A5E1DCEA296CAE60000BFC80 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				A5E1DCEB296CAEE1000BFC80 /* ConnectionDbService.swift */,
-				A5F6EA68296F56DA000AA989 /* TourDbService.swift */,
+				A5E1DCEB296CAEE1000BFC80 /* ConnectionApiService.swift */,
+				A5F6EA68296F56DA000AA989 /* TourApiService.swift */,
+				A5C66A0129A0F6AC007AAE28 /* ApiCaller.swift */,
 			);
-			path = Database;
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,8 +360,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5C66A0D29A10D09007AAE28 /* ParcelTableViewCell.xib in Resources */,
 				A5E1DC9C2965DD5A000BFC80 /* LaunchScreen.storyboard in Resources */,
 				A5E1DCC82965E985000BFC80 /* Localizable.strings in Resources */,
+				A57CEC89298D5ED90045D5EB /* Info.plist in Resources */,
 				A5E1DC992965DD5A000BFC80 /* Assets.xcassets in Resources */,
 				A5E1DCE129662CBE000BFC80 /* HomeViewController.xib in Resources */,
 				A5E1DCF2296CC62B000BFC80 /* TourViewController.xib in Resources */,
@@ -380,19 +393,22 @@
 			files = (
 				A5B69D572974289F00157B92 /* DateConverter.swift in Sources */,
 				A5F6EA61296F50F4000AA989 /* Tour.swift in Sources */,
+				A5C66A0C29A10D09007AAE28 /* ParcelTableViewCell.swift in Sources */,
 				A5E1DCEE296CB2D4000BFC80 /* AppInstance.swift in Sources */,
 				A5E1DCF1296CC62B000BFC80 /* TourViewController.swift in Sources */,
 				A5E1DCE72966376F000BFC80 /* SessionKeys.swift in Sources */,
 				A5E1DC902965DD59000BFC80 /* AppDelegate.swift in Sources */,
 				A5E1DCE4296633AF000BFC80 /* ConnectionService.swift in Sources */,
+				A5C66A0229A0F6AC007AAE28 /* ApiCaller.swift in Sources */,
 				A5F6EA63296F514F000AA989 /* Parcel.swift in Sources */,
 				A5F6EA5F296F50AD000AA989 /* TourService.swift in Sources */,
+				A5C66A0729A0F9F6007AAE28 /* HttpMethod.swift in Sources */,
 				A5F6EA65296F527F000AA989 /* ParcelKeys.swift in Sources */,
-				A5F6EA69296F56DA000AA989 /* TourDbService.swift in Sources */,
+				A5F6EA69296F56DA000AA989 /* TourApiService.swift in Sources */,
 				A5E1DCDD2966248A000BFC80 /* LocalizedStringKeys.swift in Sources */,
 				A5E1DCD42965EBE0000BFC80 /* Session.swift in Sources */,
 				A5F6EA67296F53DF000AA989 /* TourKeys.swift in Sources */,
-				A5E1DCEC296CAEE1000BFC80 /* ConnectionDbService.swift in Sources */,
+				A5E1DCEC296CAEE1000BFC80 /* ConnectionApiService.swift in Sources */,
 				A5E1DCE029662CBE000BFC80 /* HomeViewController.swift in Sources */,
 				A5F6EA6B296F58CF000AA989 /* ErrorCode.swift in Sources */,
 			);
@@ -434,9 +450,7 @@
 		A53C62282974B0E000AC4F1D /* Info.plist */ = {
 			isa = PBXVariantGroup;
 			children = (
-				A53C62272974B0E000AC4F1D /* en */,
-				A53C62292974B0E600AC4F1D /* fr */,
-				A53C622A2974B0E800AC4F1D /* es */,
+				A57CEC8A2990439C0045D5EB /* Base */,
 			);
 			name = Info.plist;
 			sourceTree = "<group>";

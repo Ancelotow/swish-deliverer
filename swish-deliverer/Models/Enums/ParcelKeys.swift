@@ -11,6 +11,9 @@ enum ParcelKeys: String {
     
     case uuid
     case addressstreet
+    case civility
+    case lastname
+    case firstname
     case town
     case zipcode
     case country

@@ -15,3 +15,13 @@
 "connection_loding" = "Conexión...";
 "logins_required" = "Se requiere nombre de usuario y contraseña";
 "unknow_error" = "Error desconocido";
+"http_internal_server_error" = "Error Interno del Servidor (error 500)";
+"http_not_found_error" = "No se encontró el recurso HTTP (error 404)";
+"http_unauthorized_error" = "No autorizado (error 401)";
+"http_forbidden_error" = "Prohibido (error 403)";
+"date_delivery_label" = "Fecha de entrega:";
+"date_format" = "dd/MM/yyyy HH:mm:ss";
+"location_denied" = "Abrir preferencias";
+"cancel" = "Anular";
+"enable_location_in_phone_prefs" = "Habilitar la ubicación en las preferencias del teléfono";
+"open_prefs" = "Abrir preferencias";

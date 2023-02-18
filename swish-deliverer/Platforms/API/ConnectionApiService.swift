@@ -7,32 +7,14 @@
 
 import Foundation
 
-class ConnectionDbService: ConnectionService {
+class ConnectionApiService: ConnectionService {
     
     func connection(login: String, password: String, _ completion: @escaping (String?, Error?) -> Void) {
         let body = ["login": login, "password": password]
-        let urlComponents = URLComponents(string: "https://swish.herokuapp.com/login")
-        var urlRequest = URLRequest(url: urlComponents!.url!)
-        urlRequest.httpMethod = "POST"
-        do {
-            urlRequest.httpBody = try? JSONSerialization.data(withJSONObject: body)
-            urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-            let task = URLSession.shared.dataTask(with: urlRequest) { data, response, err in
+        let apiCaller = ApiCaller(endpoint: "login", method: HttpMethod.POST).withBody(body: body)
+        apiCaller.execute() { data, err in
             guard err == nil else {
                 completion(nil, err)
-                return
-            }
-            guard let httpResponse = response as? HTTPURLResponse else {
-                completion(nil, NSError(domain: AppInstance.getInstance().idBundle, code: 2, userInfo: [
-                    NSLocalizedFailureReasonErrorKey: NSLocalizedString(LocalizedStringKeys.no_data_found.rawValue, comment: "")
-                ]))
-                return
-            }
-            if httpResponse.statusCode == 400 {
-                completion(nil, NSError(domain: AppInstance.getInstance().idBundle, code: 2, userInfo: [
-                    NSLocalizedFailureReasonErrorKey: String(bytes: data!, encoding: String.Encoding.utf8)
-                ]))
                 return
             }
             guard let d = data else {
@@ -60,10 +42,6 @@ class ConnectionDbService: ConnectionService {
                 completion(nil, err)
                 return
             }
-        }
-        task.resume()
-        } catch {
-            completion(nil, error)
         }
     }
     

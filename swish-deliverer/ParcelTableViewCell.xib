@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="85" id="KGk-i7-Jjw" customClass="ParcelTableViewCell" customModule="swish_deliverer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="405" height="85"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="405" height="85"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M. Gillian FLYNN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDj-fM-Buv">
+                        <rect key="frame" x="70" y="12.666666666666664" width="113.33333333333331" height="17"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9 rue des Rosiers, 75000 Paris" textAlignment="natural" lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8ek-bv-07s">
+                        <rect key="frame" x="69.999999999999986" y="29.666666666666671" width="197.66666666666663" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="300m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atd-lL-9Wm">
+                        <rect key="frame" x="362" y="9" width="38" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cube.box.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ba5-Li-gaE">
+                        <rect key="frame" x="5" y="13" width="60" height="60"/>
+                        <color key="tintColor" systemColor="systemOrangeColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="60" id="3S7-ov-iTr"/>
+                            <constraint firstAttribute="width" constant="60" id="nBd-4r-WRe"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date de livraison:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DbS-03-CbE">
+                        <rect key="frame" x="70" y="58.666666666666657" width="91.333333333333314" height="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="22/11/2022 11:34" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U6l-CR-hKc">
+                        <rect key="frame" x="166.33333333333334" y="58.666666666666657" width="89" height="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="ba5-Li-gaE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="0ae-Gz-xhc"/>
+                    <constraint firstItem="atd-lL-9Wm" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="7GZ-9x-aIs"/>
+                    <constraint firstItem="DbS-03-CbE" firstAttribute="leading" secondItem="ba5-Li-gaE" secondAttribute="trailing" constant="5" id="7aX-Hf-Bp6"/>
+                    <constraint firstItem="ba5-Li-gaE" firstAttribute="bottom" secondItem="DbS-03-CbE" secondAttribute="bottom" id="9Mu-ba-93K"/>
+                    <constraint firstItem="8ek-bv-07s" firstAttribute="top" secondItem="HDj-fM-Buv" secondAttribute="bottom" id="HUH-vh-J9N"/>
+                    <constraint firstItem="U6l-CR-hKc" firstAttribute="centerY" secondItem="DbS-03-CbE" secondAttribute="centerY" id="J0V-Co-ITn"/>
+                    <constraint firstItem="8ek-bv-07s" firstAttribute="leading" secondItem="ba5-Li-gaE" secondAttribute="trailing" constant="5" id="UDV-xl-hfM"/>
+                    <constraint firstItem="ba5-Li-gaE" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="d4t-Fo-V3t"/>
+                    <constraint firstAttribute="trailing" secondItem="atd-lL-9Wm" secondAttribute="trailing" constant="5" id="eAM-NA-MPU"/>
+                    <constraint firstItem="U6l-CR-hKc" firstAttribute="leading" secondItem="DbS-03-CbE" secondAttribute="trailing" constant="5" id="eSi-Y3-p0w"/>
+                    <constraint firstItem="HDj-fM-Buv" firstAttribute="leading" secondItem="ba5-Li-gaE" secondAttribute="trailing" constant="5" id="n39-8S-jGu"/>
+                    <constraint firstItem="HDj-fM-Buv" firstAttribute="top" secondItem="ba5-Li-gaE" secondAttribute="top" id="suC-iz-8Sa"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="labelAddressStreet" destination="8ek-bv-07s" id="yMT-yr-EuQ"/>
+                <outlet property="labelDateDelivery" destination="U6l-CR-hKc" id="NIF-Dt-1Y6"/>
+                <outlet property="labelDelivery" destination="DbS-03-CbE" id="bBo-mK-Gl3"/>
+                <outlet property="labelDistance" destination="atd-lL-9Wm" id="aCJ-Jf-XqP"/>
+                <outlet property="labelFullname" destination="HDj-fM-Buv" id="xir-wl-6oA"/>
+            </connections>
+            <point key="canvasLocation" x="150.38167938931298" y="34.859154929577464"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="cube.box.fill" catalog="system" width="128" height="123"/>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

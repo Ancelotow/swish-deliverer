@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Pour vous connecter facilement à votre compte</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Permet de localiser vos livraisons sur la carte</string>
 </dict>

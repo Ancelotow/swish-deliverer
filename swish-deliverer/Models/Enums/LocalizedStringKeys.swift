@@ -26,5 +26,15 @@ enum LocalizedStringKeys: String {
     case connection_loding
     case logins_required
     case unknow_error
+    case http_internal_server_error
+    case http_not_found_error
+    case http_unauthorized_error
+    case http_forbidden_error
+    case date_delivery_label
+    case date_format
+    case location_denied
+    case cancel
+    case enable_location_in_phone_prefs
+    case open_prefs
     
 }

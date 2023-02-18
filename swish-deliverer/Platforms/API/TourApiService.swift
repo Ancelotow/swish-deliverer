@@ -7,36 +7,19 @@
 
 import Foundation
 
-class TourDbService: TourService {
+class TourApiService: TourService {
     
     func getCurrentTour(_ completion: @escaping (Tour?, Error?) -> Void) {
-        let urlComponents = URLComponents(string: "https://swish.herokuapp.com/current-delivery-tour")
-        var urlRequest = URLRequest(url: urlComponents!.url!)
-        urlRequest.httpMethod = "GET"
-        do {
-            urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
-            guard let token = Session.getSession()?.token else {
-                completion(nil, NSError(domain: AppInstance.getInstance().idBundle, code: ErrorCode.notConnected.hashValue, userInfo: [
-                    NSLocalizedFailureReasonErrorKey: NSLocalizedString(LocalizedStringKeys.no_login_token.rawValue, comment: "")
-                ]))
-                return
-            }
-            urlRequest.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
-            let task = URLSession.shared.dataTask(with: urlRequest) { data, response, err in
+        guard let token = Session.getSession()?.token else {
+            completion(nil, NSError(domain: AppInstance.getInstance().idBundle, code: ErrorCode.notConnected.hashValue, userInfo: [
+                NSLocalizedFailureReasonErrorKey: NSLocalizedString(LocalizedStringKeys.no_login_token.rawValue, comment: "")
+            ]))
+            return
+        }
+        let apiCaller = ApiCaller(endpoint: "current-delivery-tour", method: HttpMethod.GET).withJwtToken(token: token);
+        apiCaller.execute() { data, err in
             guard err == nil else {
                 completion(nil, err)
-                return
-            }
-            guard let httpResponse = response as? HTTPURLResponse else {
-                completion(nil, NSError(domain: AppInstance.getInstance().idBundle, code: ErrorCode.noData.hashValue, userInfo: [
-                    NSLocalizedFailureReasonErrorKey: NSLocalizedString(LocalizedStringKeys.no_response_found.rawValue, comment: "")
-                ]))
-                return
-            }
-            if httpResponse.statusCode == 400 {
-                completion(nil, NSError(domain: AppInstance.getInstance().idBundle, code: ErrorCode.badRequest.hashValue, userInfo: [
-                    NSLocalizedFailureReasonErrorKey: String(bytes: data!, encoding: String.Encoding.utf8)
-                ]))
                 return
             }
             guard let d = data else {
@@ -64,10 +47,6 @@ class TourDbService: TourService {
                 completion(nil, err)
                 return
             }
-        }
-        task.resume()
-        } catch {
-            completion(nil, error)
         }
     }
     

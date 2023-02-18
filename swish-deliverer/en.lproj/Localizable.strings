@@ -15,3 +15,13 @@
 "connection_loding" = "Connection...";
 "logins_required" = "Username and password are required";
 "unknow_error" = "Unknow error";
+"http_internal_server_error" = "Internal server error (error 500)";
+"http_not_found_error" = "HTTP ressource not found (error 404)";
+"http_unauthorized_error" = "Unhauthorized (error 401)";
+"http_forbidden_error" = "Foribidden (error 403)";
+"date_delivery_label" = "Delivery date:";
+"date_format" = "dd/MM/yyyy HH:mm:ss";
+"location_denied" = "Location denied";
+"cancel" = "Cancel";
+"enable_location_in_phone_prefs" = "Enable location in phone preferences";
+"open_prefs" = "Open preferences";

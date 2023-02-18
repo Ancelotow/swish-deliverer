@@ -6,19 +6,25 @@
 //
 
 import UIKit
+import LocalAuthentication
+import CoreLocation
 
 class HomeViewController: UIViewController {
-
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var loginTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var forgotPasswordButton: UIButton!
     @IBOutlet weak var signInButton: UIButton!
-    let connectionService: ConnectionService = ConnectionDbService()
+    let connectionService: ConnectionService = ConnectionApiService()
     var loadingAlert: UIAlertController? = nil
+    var coordinate: CLLocationCoordinate2D?
+    var locationManager: CLLocationManager?
+    var context = LAContext()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.askLocationPermission()
         self.updateLocalizedStrings()
     }
     
@@ -56,8 +62,21 @@ class HomeViewController: UIViewController {
         alert.dismiss(animated: true, completion: completion)
         self.loadingAlert = nil
     }
-
+    
+    func askLocationPermission() {
+        let manager = CLLocationManager()
+        manager.delegate = self
+        if manager.authorizationStatus == .notDetermined {
+            manager.requestWhenInUseAuthorization()
+            
+        } else {
+            print(manager.authorizationStatus)
+        }
+        self.locationManager = manager
+    }
+    
     @IBAction func signIn(_ sender: Any) {
+        //self.authenticate()
         guard let login = loginTextField.text,
               let password = passwordTextField.text,
               !login.isEmpty, !password.isEmpty  else {
@@ -79,10 +98,81 @@ class HomeViewController: UIViewController {
             }
             DispatchQueue.main.async {
                 self.dismissLoadingAlert() {
-                    self.navigationController?.pushViewController(TourViewController(), animated: true)
+                    self.goToTourView()
                 }
             }
         }
     }
     
+    func goToTourView() {
+        if let coordinate = self.coordinate {
+            let controller = TourViewController.newInstance(coordinate: coordinate)
+            self.navigationController?.pushViewController(controller, animated: true)
+        } else {
+            displayDeniedMessage()
+        }
+    }
+    
+    func authenticate() {
+        context = LAContext()
+        context.localizedCancelTitle = "Enter Username/Password"
+
+        // First check if we have the needed hardware support.
+        var error: NSError?
+        guard context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) else {
+            print(error?.localizedDescription ?? "Can't evaluate policy")
+
+            // Fall back to a asking for username and password.
+            // ...
+            return
+        }
+        Task {
+            do {
+                try await context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Log in to your account")
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+}
+
+extension HomeViewController: CLLocationManagerDelegate {
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        self.hasLocationManagerStatus(manager)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let lastLocation = locations.last else {
+            return
+        }
+        self.coordinate = lastLocation.coordinate
+        manager.stopUpdatingLocation()
+    }
+    
+    func hasLocationManagerStatus(_ manager: CLLocationManager) {
+        if manager.authorizationStatus == .restricted || manager.authorizationStatus == .denied {
+            self.displayDeniedMessage()
+        } else if manager.authorizationStatus == .authorizedWhenInUse || manager.authorizationStatus == .authorizedAlways {
+            self.handleGPSCoordinate(manager)
+        }
+    }
+    
+    func displayDeniedMessage() {
+        let title = NSLocalizedString(LocalizedStringKeys.location_denied.rawValue, comment: "")
+        let message = NSLocalizedString(LocalizedStringKeys.enable_location_in_phone_prefs.rawValue, comment: "")
+        let cancelLabel = NSLocalizedString(LocalizedStringKeys.cancel.rawValue, comment: "")
+        let openPrefs = NSLocalizedString(LocalizedStringKeys.open_prefs.rawValue, comment: "")
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: cancelLabel, style: .cancel))
+        alert.addAction(UIAlertAction(title: openPrefs, style: .default, handler: { _ in
+            UIApplication.shared.open(URL(string: UIApplication.openSettingsURLString)!)
+        }))
+        self.present(alert, animated: true)
+    }
+    
+    func handleGPSCoordinate(_ manager: CLLocationManager) {
+        manager.startUpdatingLocation()
+    }
+
 }
