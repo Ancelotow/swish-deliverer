@@ -26,7 +26,7 @@ class ParcelTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func showDeliveredInformations() {
+    fileprivate func showDeliveredInformations() {
         if(parcel.isDelivered && parcel.dateDelivered != nil) {
             labelDelivery.isHidden = false
             labelDateDelivery.isHidden = false
@@ -39,8 +39,8 @@ class ParcelTableViewCell: UITableViewCell {
         }
     }
     
-    func updateDistance(userPosition: CLLocationCoordinate2D) {
-        if let coordinate = parcel?.coordinate {
+    fileprivate func updateDistance(userPosition: CLLocationCoordinate2D) {
+        if let coordinate = parcel.coordinate {
             let myLocation = CLLocation(latitude: userPosition.latitude, longitude: userPosition.longitude)
             let parcelLocation = CLLocation(latitude: coordinate.coordinate.latitude, longitude: coordinate.coordinate.longitude)
             let distance = myLocation.distance(from: parcelLocation)

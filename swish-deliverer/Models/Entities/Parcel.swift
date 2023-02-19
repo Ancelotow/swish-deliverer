@@ -50,9 +50,11 @@ class Parcel {
         let geocoder = CLGeocoder()
         geocoder.geocodeAddressString("\(self.addressStreet) \(self.zipCode) \(self.town) \(self.country)") { placemmarks, err in
             guard let placemmarks = placemmarks else {
+                completion()
                 return
             }
             self.coordinate = placemmarks.last!.location
+            completion()
         }
     }
     

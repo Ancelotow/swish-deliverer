@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TourViewController" customModule="swish_deliverer" customModuleProvider="target">
             <connections>
+                <outlet property="labelNoParcels" destination="ECZ-E4-4NW" id="Smy-EH-U3m"/>
                 <outlet property="labelParcels" destination="PQO-a2-0fg" id="pK7-Un-EQy"/>
                 <outlet property="mapView" destination="wdh-o9-X1w" id="93r-vt-hKa"/>
                 <outlet property="tableParcels" destination="5ha-Gz-iQA" id="mSl-ak-qdn"/>
@@ -36,13 +37,21 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vous n'avez pas de livraison pour le moment  Prenez donc une pause 🙂" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ECZ-E4-4NW">
+                    <rect key="frame" x="24" y="633" width="342.33333333333331" height="40.666666666666629"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="wdh-o9-X1w" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="6WI-fZ-CrX"/>
                 <constraint firstItem="5ha-Gz-iQA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="BVq-2q-Mh6"/>
+                <constraint firstItem="ECZ-E4-4NW" firstAttribute="centerY" secondItem="5ha-Gz-iQA" secondAttribute="centerY" id="GWh-cc-VMZ"/>
                 <constraint firstItem="wdh-o9-X1w" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.5" id="LLT-ia-Q53"/>
+                <constraint firstItem="ECZ-E4-4NW" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="QhF-to-3hD"/>
                 <constraint firstItem="wdh-o9-X1w" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="T5w-Fk-4o1"/>
                 <constraint firstAttribute="bottom" secondItem="5ha-Gz-iQA" secondAttribute="bottom" id="YkE-0c-iI1"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="wdh-o9-X1w" secondAttribute="trailing" id="gxN-LQ-kQK"/>

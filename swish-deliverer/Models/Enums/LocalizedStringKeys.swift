@@ -36,5 +36,6 @@ enum LocalizedStringKeys: String {
     case cancel
     case enable_location_in_phone_prefs
     case open_prefs
+    case no_parcels
     
 }

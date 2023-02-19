@@ -15,6 +15,7 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var labelParcels: UILabel!
     @IBOutlet weak var tableParcels: UITableView!
+    @IBOutlet weak var labelNoParcels: UILabel!
     var locationManager: CLLocationManager?
     var coordinate: CLLocationCoordinate2D!
     let tourService: TourService = TourApiService()
@@ -40,18 +41,29 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
             }
             DispatchQueue.main.async {
                 guard let tour = tour else {
+                    self.showNoParcelMessage()
                     return
                 }
+                
                 self.tour = tour
-                guard let tour = self.tour else {
-                    return
+                if(self.tour!.parcels.isEmpty) {
+                    self.showNoParcelMessage()
                 }
-                for parcel in tour.parcels {
+                
+                self.labelNoParcels.isHidden = true
+                self.tableParcels.isHidden = false
+                for parcel in self.tour!.parcels {
                     self.addMarkerFromParcel(parcel: parcel)
                 }
                 Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.handleMoveUser), userInfo: nil, repeats: true)
             }
         }
+    }
+
+    func showNoParcelMessage() {
+        self.tableParcels.isHidden = true
+        self.labelNoParcels.isHidden = false
+        self.labelNoParcels.text = NSLocalizedString(LocalizedStringKeys.no_parcels.rawValue, comment: "")
     }
     
     static func newInstance(coordinate: CLLocationCoordinate2D) -> TourViewController {
@@ -77,8 +89,6 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
         if manager.authorizationStatus == .notDetermined {
             manager.requestWhenInUseAuthorization()
             
-        } else {
-            print(manager.authorizationStatus)
         }
         self.locationManager = manager
     }
@@ -86,12 +96,7 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
     @objc func handleMoveUser()
     {
         askLocationPermission()
-        if let indexPaths = self.tableParcels?.indexPathsForVisibleRows {
-            for indexPath in indexPaths {
-                let cell = self.tableParcels.dequeueReusableCell(withIdentifier: TourViewController.parcelCellId, for: indexPath) as! ParcelTableViewCell
-                cell.updateDistance(userPosition: self.coordinate)
-            }
-        }
+        self.tableParcels.reloadData()
     }
     
 }
