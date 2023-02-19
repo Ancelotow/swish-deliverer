@@ -96,7 +96,14 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
     @objc func handleMoveUser()
     {
         askLocationPermission()
-        self.tableParcels.reloadData()
+        if let indexPaths = self.tableParcels?.indexPathsForVisibleRows {
+             for indexPath in indexPaths {
+                 guard let parcel = self.tour?.parcels[indexPath.row] else {
+                     return
+                 }
+                 (self.tableParcels.cellForRow(at: indexPath) as! ParcelTableViewCell).redraw(parcel: parcel, userPosition: self.coordinate)
+             }
+         }
     }
     
 }
@@ -118,6 +125,19 @@ extension TourViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let parcel = self.tour?.parcels[indexPath.row]
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let editAction = UITableViewRowAction(style: .normal, title: "Livrer") { (rowAction, indexPath) in
+            guard let parcel = self.tour?.parcels[indexPath.row] else {
+                return
+            }
+            parcel.delivered()
+            (self.tableParcels.cellForRow(at: indexPath) as! ParcelTableViewCell).redraw(parcel: parcel, userPosition: self.coordinate)
+        }
+        editAction.backgroundColor = .systemGreen
+
+        return [editAction]
     }
     
 }

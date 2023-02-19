@@ -19,8 +19,8 @@ class Parcel {
     let town: String
     let zipCode: String
     let country: String
-    let isDelivered: Bool
-    let dateDelivered: Date?
+    var isDelivered: Bool
+    var dateDelivered: Date?
     let urlProofDelivered: String?
     var coordinate: CLLocation?
     
@@ -44,6 +44,11 @@ class Parcel {
     
     func getFullAddress() -> String {
         return "\(addressStreet), \(zipCode) \(town)"
+    }
+    
+    func delivered() {
+        self.dateDelivered = Date.now
+        self.isDelivered = true
     }
     
     func initLocation(_ completion: @escaping () -> Void) {
