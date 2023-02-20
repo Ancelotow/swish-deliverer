@@ -11,4 +11,6 @@ protocol TourService {
     
     func getCurrentTour(_ completion: @escaping (Tour?, Error?) -> Void)
     
+    func deliverParcel(parcel: Parcel, proofData: Data, _ completion: @escaping (Error?) -> Void)
+    
 }

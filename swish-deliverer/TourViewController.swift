@@ -18,6 +18,7 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var labelNoParcels: UILabel!
     var locationManager: CLLocationManager?
     var coordinate: CLLocationCoordinate2D!
+    var parcelToDelivered: Parcel?
     let tourService: TourService = TourApiService()
     var tour: Tour? {
         didSet {
@@ -133,6 +134,15 @@ extension TourViewController: UITableViewDataSource, UITableViewDelegate {
                 return
             }
             parcel.delivered()
+            self.parcelToDelivered = parcel
+            guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+                return
+            }
+            let picker = UIImagePickerController()
+            picker.sourceType = .camera
+            picker.allowsEditing = true
+            picker.delegate = self
+            self.present(picker, animated: true)
             (self.tableParcels.cellForRow(at: indexPath) as! ParcelTableViewCell).redraw(parcel: parcel, userPosition: self.coordinate)
         }
         editAction.backgroundColor = .systemGreen
@@ -152,4 +162,26 @@ extension TourViewController: MKMapViewDelegate {
         pinAnnotation.markerTintColor = .orange
         return pinAnnotation
     }
+}
+
+extension TourViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+ 
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.editedImage] as? UIImage else {
+            return
+        }
+        guard let imageData = image.pngData(),
+              let parcel = parcelToDelivered else {
+            return
+        }
+        tourService.deliverParcel(parcel: parcel, proofData: imageData) { err in
+            guard err == nil else {
+                print(err)
+                return
+            }
+            print("cooool")
+        }
+        picker.dismiss(animated: true)
+    }
+    
 }

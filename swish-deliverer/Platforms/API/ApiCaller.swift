@@ -14,13 +14,13 @@ class ApiCaller {
     
     
     init(endpoint: String, method: HttpMethod) {
-        var uri = URLComponents(string: apiServer + endpoint)
+        let uri = URLComponents(string: apiServer + endpoint)
         request = URLRequest(url: uri!.url!)
         request.httpMethod = method.rawValue
         request.addValue("application/json", forHTTPHeaderField: "Accept")
     }
     
-    func withBody(body: [String: Any]) -> ApiCaller {
+    func withJsonBody(body: [String: Any]) -> ApiCaller {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpBody = try? JSONSerialization.data(withJSONObject: body)
         return self
@@ -30,6 +30,25 @@ class ApiCaller {
         request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         return self
     }
+    
+    func withFileBody(bodyBoundary: String, imageBody: Data, attachmentKey: String, filename: String) -> ApiCaller {
+        request.addValue("multipart/form-data; boundary=\(bodyBoundary)", forHTTPHeaderField: "Content-Type")
+        let requestData = createRequestBody(imageData: imageBody, boundary: bodyBoundary, attachmentKey: attachmentKey, fileName: filename)
+        request.addValue("\(requestData.count)", forHTTPHeaderField: "content-length")
+        request.httpBody = requestData
+        return self
+    }
+    
+    fileprivate func createRequestBody(imageData: Data, boundary: String, attachmentKey: String, fileName: String) -> Data{
+            let lineBreak = "\r\n"
+            var requestBody = Data()
+            requestBody.append("\(lineBreak)--\(boundary + lineBreak)" .data(using: .utf8)!)
+            requestBody.append("Content-Disposition: form-data; name=\"\(attachmentKey)\"; filename=\"\(fileName)\"\(lineBreak)" .data(using: .utf8)!)
+            requestBody.append("Content-Type: image/jpeg \(lineBreak + lineBreak)" .data(using: .utf8)!)
+            requestBody.append(imageData)
+            requestBody.append("\(lineBreak)--\(boundary)--\(lineBreak)" .data(using: .utf8)!)
+            return requestBody
+        }
     
     func execute(_ completion: @escaping (Data?, Error?) -> Void) {
         let task = URLSession.shared.dataTask(with: request) { data, response, err in
@@ -73,6 +92,10 @@ class ApiCaller {
                 completion(nil, NSError(domain: AppInstance.getInstance().idBundle, code: 2, userInfo: [
                     NSLocalizedFailureReasonErrorKey: String(bytes: data!, encoding: String.Encoding.utf8)
                 ]))
+                return
+            }
+            if statusCode == 204 {
+                completion(nil, nil)
                 return
             }
             completion(data, nil)

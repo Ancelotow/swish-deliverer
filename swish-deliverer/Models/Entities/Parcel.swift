@@ -68,10 +68,10 @@ class Parcel {
               let civility = dict[ParcelKeys.civility.rawValue] as? String,
               let lastname = dict[ParcelKeys.lastname.rawValue] as? String,
               let firstname = dict[ParcelKeys.firstname.rawValue] as? String,
-              let addressStreet = dict[ParcelKeys.addressstreet.rawValue] as? String,
+              let addressStreet = dict[ParcelKeys.addressStreet.rawValue] as? String,
               let town = dict[ParcelKeys.town.rawValue] as? String,
-              let zipCode = dict[ParcelKeys.zipcode.rawValue] as? String,
-              let isDelivered = dict[ParcelKeys.isdelivered.rawValue] as? Bool,
+              let zipCode = dict[ParcelKeys.zipCode.rawValue] as? String,
+              let isDelivered = dict[ParcelKeys.isDelivered.rawValue] as? Bool,
               let country = dict[ParcelKeys.country.rawValue] as? String else {
             return nil
         }
@@ -79,10 +79,10 @@ class Parcel {
             return nil
         }
         var dateDelivered: Date? = nil
-        if let dateDeliveredStr = dict[ParcelKeys.datedelivered.rawValue] as? String {
+        if let dateDeliveredStr = dict[ParcelKeys.dateDelivered.rawValue] as? String {
             dateDelivered = DateConverter().toDate(dateDeliveredStr)
         }
-        let urlProofDelivered = dict[ParcelKeys.urlproofdelivered.rawValue] as? String
+        let urlProofDelivered = dict[ParcelKeys.urlProofDelivered.rawValue] as? String
         return Parcel(uuid: uuid, civility: civility, lastname: lastname, firstname: firstname, addressStreet: addressStreet, town: town, zipCode: zipCode, country: country, isDelivered: isDelivered, dateDelivered: dateDelivered, urlProofDelivered: urlProofDelivered)
     }
     

@@ -10,15 +10,15 @@ import Foundation
 enum ParcelKeys: String {
     
     case uuid
-    case addressstreet
+    case addressStreet
     case civility
     case lastname
     case firstname
     case town
-    case zipcode
+    case zipCode
     case country
-    case isdelivered
-    case datedelivered
-    case urlproofdelivered
+    case isDelivered
+    case dateDelivered
+    case urlProofDelivered
     
 }

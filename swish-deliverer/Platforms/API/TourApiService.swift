@@ -9,6 +9,7 @@ import Foundation
 
 class TourApiService: TourService {
     
+    
     func getCurrentTour(_ completion: @escaping (Tour?, Error?) -> Void) {
         guard let token = Session.getSession()?.token else {
             completion(nil, NSError(domain: AppInstance.getInstance().idBundle, code: ErrorCode.notConnected.hashValue, userInfo: [
@@ -47,6 +48,29 @@ class TourApiService: TourService {
                 completion(nil, err)
                 return
             }
+        }
+    }
+    
+    func deliverParcel(parcel: Parcel, proofData: Data, _ completion: @escaping (Error?) -> Void) {
+        guard let token = Session.getSession()?.token else {
+            completion(NSError(domain: AppInstance.getInstance().idBundle, code: ErrorCode.notConnected.hashValue, userInfo: [
+                NSLocalizedFailureReasonErrorKey: NSLocalizedString(LocalizedStringKeys.no_login_token.rawValue, comment: "")
+            ]))
+            return
+        }
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-ddTHH:mm:ss"
+        var dateStr = formatter.string(from: parcel.dateDelivered!)
+        let endpoint = "parcel/\(parcel.uuid)/delivery?date=\(dateStr)"
+        let apiCaller = ApiCaller(endpoint: endpoint, method: HttpMethod.PATCH)
+            .withJwtToken(token: token)
+            .withFileBody(bodyBoundary: parcel.uuid.uuidString, imageBody: proofData, attachmentKey: "proof", filename: "proof.png");
+        apiCaller.execute() { data, err in
+            guard err == nil else {
+                completion(err)
+                return
+            }
+            completion(nil)
         }
     }
     

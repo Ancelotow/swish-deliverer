@@ -11,7 +11,7 @@ class ConnectionApiService: ConnectionService {
     
     func connection(login: String, password: String, _ completion: @escaping (String?, Error?) -> Void) {
         let body = ["login": login, "password": password]
-        let apiCaller = ApiCaller(endpoint: "login", method: HttpMethod.POST).withBody(body: body)
+        let apiCaller = ApiCaller(endpoint: "login", method: HttpMethod.POST).withJsonBody(body: body)
         apiCaller.execute() { data, err in
             guard err == nil else {
                 completion(nil, err)
