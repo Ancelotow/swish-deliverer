@@ -31,11 +31,42 @@ class ApiCaller {
         return self
     }
     
-    func withFileBody(bodyBoundary: String, imageBody: Data, attachmentKey: String, filename: String) -> ApiCaller {
-        request.addValue("multipart/form-data; boundary=\(bodyBoundary)", forHTTPHeaderField: "Content-Type")
-        let requestData = createRequestBody(imageData: imageBody, boundary: bodyBoundary, attachmentKey: attachmentKey, fileName: filename)
-        request.addValue("\(requestData.count)", forHTTPHeaderField: "content-length")
-        request.httpBody = requestData
+    func withFileBody(imageBody: Data, attachmentKey: String, filename: String) -> ApiCaller {
+        var semaphore = DispatchSemaphore (value: 0)
+        let parameters = [
+          [
+            "key": "proof",
+            "src": "/path/to/file",
+            "type": "file"
+          ]] as [[String : Any]]
+
+        let boundary = "Boundary-\(UUID().uuidString)"
+        var body = ""
+        var error: Error? = nil
+        for param in parameters {
+          if param["disabled"] == nil {
+            let paramName = param["key"]!
+            body += "--\(boundary)\r\n"
+            body += "Content-Disposition:form-data; name=\"\(paramName)\""
+            if param["contentType"] != nil {
+              body += "\r\nContent-Type: \(param["contentType"] as! String)"
+            }
+            let paramType = param["type"] as! String
+            if paramType == "text" {
+              let paramValue = param["value"] as! String
+              body += "\r\n\r\n\(paramValue)\r\n"
+            } else {
+              let paramSrc = param["src"] as! String
+              let fileContent = String(data: imageBody, encoding: .utf8)
+              body += "; filename=\"\(paramSrc)\"\r\n"
+                + "Content-Type: \"content-type header\"\r\n\r\n\(fileContent)\r\n"
+            }
+          }
+        }
+        body += "--\(boundary)--\r\n";
+        let postData = body.data(using: .utf8)
+        request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+        request.httpBody = postData
         return self
     }
     

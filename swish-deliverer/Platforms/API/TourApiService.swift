@@ -64,7 +64,7 @@ class TourApiService: TourService {
         let endpoint = "parcel/\(parcel.uuid)/delivery?date=\(dateStr)"
         let apiCaller = ApiCaller(endpoint: endpoint, method: HttpMethod.PATCH)
             .withJwtToken(token: token)
-            .withFileBody(bodyBoundary: parcel.uuid.uuidString, imageBody: proofData, attachmentKey: "proof", filename: "proof.png");
+            .withFileBody(imageBody: proofData, attachmentKey: "proof", filename: "proof.png");
         apiCaller.execute() { data, err in
             guard err == nil else {
                 completion(err)

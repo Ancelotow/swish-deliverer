@@ -176,7 +176,6 @@ extension TourViewController: UINavigationControllerDelegate, UIImagePickerContr
         }
         tourService.deliverParcel(parcel: parcel, proofData: imageData) { err in
             guard err == nil else {
-                print(err)
                 return
             }
             print("cooool")
