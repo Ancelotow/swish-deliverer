@@ -20,5 +20,7 @@ enum ParcelKeys: String {
     case isDelivered
     case dateDelivered
     case urlProofDelivered
+    case phone
+    case email
     
 }

@@ -12,6 +12,8 @@
 "my_parcels" = "My parcels";
 "invalid" = "Invalid";
 "close" = "Close";
+"to_deliver" = "Deliver";
+"to_call" = "Call";
 "connection_loding" = "Connection...";
 "logins_required" = "Username and password are required";
 "unknow_error" = "Unknow error";

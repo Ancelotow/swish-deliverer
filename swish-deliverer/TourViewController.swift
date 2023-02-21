@@ -122,6 +122,14 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
         present(self.loadingAlert!, animated: true, completion: nil)
     }
     
+    func showErrorAlertWithMessage(_ message: String) {
+        let title = NSLocalizedString(LocalizedStringKeys.invalid.rawValue, comment: "")
+        let closeTitle = NSLocalizedString(LocalizedStringKeys.close.rawValue, comment: "")
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: closeTitle, style: .cancel))
+        self.present(alert, animated: true)
+    }
+    
     @objc func handleMoveUser()
     {
         askLocationPermission()
@@ -157,10 +165,33 @@ extension TourViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let editAction = UITableViewRowAction(style: .normal, title: "Livrer") { (rowAction, indexPath) in
-            guard let parcel = self.tour?.parcels[indexPath.row] else {
-                return
-            }
+        var actions: [UITableViewRowAction] = []
+        guard let parcel = self.tour?.parcels[indexPath.row] else {
+            return actions
+        }
+        if !parcel.isDelivered {
+            actions.append(getEditRowAction(parcel: parcel))
+        }
+        if let phoneNumber = parcel.phone {
+            actions.append(getCallRowAction(phoneNumber: phoneNumber))
+        }
+        return actions
+    }
+    
+    fileprivate func getCallRowAction(phoneNumber: String) -> UITableViewRowAction {
+        let title = NSLocalizedString(LocalizedStringKeys.to_call.rawValue, comment: "")
+        let callAction = UITableViewRowAction(style: .normal, title: title) { (rowAction, indexPath) in
+            if let url = URL(string: "tel://\(phoneNumber)") {
+                 UIApplication.shared.openURL(url)
+             }
+        }
+        callAction.backgroundColor = .systemBlue
+        return callAction
+    }
+    
+    fileprivate func getEditRowAction(parcel: Parcel) -> UITableViewRowAction {
+        let title = NSLocalizedString(LocalizedStringKeys.to_deliver.rawValue, comment: "")
+        let editAction = UITableViewRowAction(style: .normal, title: title) { (rowAction, indexPath) in
             guard let parcelCoordinate = parcel.coordinate else {
                 return
             }
@@ -183,17 +214,10 @@ extension TourViewController: UITableViewDataSource, UITableViewDelegate {
             (self.tableParcels.cellForRow(at: indexPath) as! ParcelTableViewCell).redraw(parcel: parcel, userPosition: self.coordinate)
         }
         editAction.backgroundColor = .systemGreen
-
-        return [editAction]
+        return editAction
     }
     
-    func showErrorAlertWithMessage(_ message: String) {
-        let title = NSLocalizedString(LocalizedStringKeys.invalid.rawValue, comment: "")
-        let closeTitle = NSLocalizedString(LocalizedStringKeys.close.rawValue, comment: "")
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: closeTitle, style: .cancel))
-        self.present(alert, animated: true)
-    }
+    
     
 }
 

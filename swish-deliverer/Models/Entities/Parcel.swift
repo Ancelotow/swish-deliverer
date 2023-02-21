@@ -19,12 +19,14 @@ class Parcel {
     let town: String
     let zipCode: String
     let country: String
+    let phone: String?
+    let email: String?
     var isDelivered: Bool
     var dateDelivered: Date?
     let urlProofDelivered: String?
     var coordinate: CLLocation?
     
-    init(uuid: UUID, civility: String, lastname: String, firstname: String, addressStreet: String, town: String, zipCode: String, country: String, isDelivered: Bool, dateDelivered: Date? = nil, urlProofDelivered: String? = nil) {
+    init(uuid: UUID, civility: String, lastname: String, firstname: String, addressStreet: String, town: String, zipCode: String, country: String, isDelivered: Bool, dateDelivered: Date? = nil, urlProofDelivered: String? = nil, phone: String? = nil, email: String? = nil) {
         self.uuid = uuid
         self.civility = civility
         self.lastname = lastname
@@ -36,6 +38,8 @@ class Parcel {
         self.isDelivered = isDelivered
         self.dateDelivered = dateDelivered
         self.urlProofDelivered = urlProofDelivered
+        self.phone = phone
+        self.email = email
     }
     
     func getFullname() -> String {
@@ -84,7 +88,9 @@ class Parcel {
             dateDelivered = DateConverter().toDate(dateDeliveredStr)
         }
         let urlProofDelivered = dict[ParcelKeys.urlProofDelivered.rawValue] as? String
-        return Parcel(uuid: uuid, civility: civility, lastname: lastname, firstname: firstname, addressStreet: addressStreet, town: town, zipCode: zipCode, country: country, isDelivered: isDelivered, dateDelivered: dateDelivered, urlProofDelivered: urlProofDelivered)
+        let phone = dict[ParcelKeys.phone.rawValue] as? String
+        let email = dict[ParcelKeys.email.rawValue] as? String
+        return Parcel(uuid: uuid, civility: civility, lastname: lastname, firstname: firstname, addressStreet: addressStreet, town: town, zipCode: zipCode, country: country, isDelivered: isDelivered, dateDelivered: dateDelivered, urlProofDelivered: urlProofDelivered, phone: phone, email: email)
     }
     
 }

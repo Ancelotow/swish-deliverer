@@ -12,6 +12,8 @@
 "my_parcels" = "Mis paquetes";
 "invalid" = "Inválido";
 "close" = "Cerca";
+"to_deliver" = "Entregar";
+"to_call" = "Llamar";
 "connection_loding" = "Conexión...";
 "logins_required" = "Se requiere nombre de usuario y contraseña";
 "unknow_error" = "Error desconocido";

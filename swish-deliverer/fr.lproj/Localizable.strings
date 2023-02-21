@@ -12,6 +12,8 @@
 "my_parcels" = "Mes livraisons";
 "invalid" = "Invalide";
 "close" = "Fermer";
+"to_deliver" = "Livrer";
+"to_call" = "Appeler";
 "connection_loding" = "Connexion...";
 "logins_required" = "L'identifiant et le mot de passes sont obligatoires";
 "unknow_error" = "Erreur inconnue";
