@@ -60,11 +60,14 @@ class TourApiService: TourService {
         }
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-ddTHH:mm:ss"
-        var dateStr = formatter.string(from: parcel.dateDelivered!)
+        let dateStr = formatter.string(from: parcel.dateDelivered!)
         let endpoint = "parcel/\(parcel.uuid)/delivery?date=\(dateStr)"
+        let attachments = [
+            AttachmentFile(fileDate: proofData, key: "proof", filename: "proof.png")
+        ]
         let apiCaller = ApiCaller(endpoint: endpoint, method: HttpMethod.PATCH)
             .withJwtToken(token: token)
-            .withFileBody(imageBody: proofData, attachmentKey: "proof", filename: "proof.png");
+            .withFileBody(attachments: attachments);
         apiCaller.execute() { data, err in
             guard err == nil else {
                 completion(err)

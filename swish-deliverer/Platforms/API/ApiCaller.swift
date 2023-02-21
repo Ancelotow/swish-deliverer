@@ -31,55 +31,23 @@ class ApiCaller {
         return self
     }
     
-    func withFileBody(imageBody: Data, attachmentKey: String, filename: String) -> ApiCaller {
-        var semaphore = DispatchSemaphore (value: 0)
-        let parameters = [
-          [
-            "key": "proof",
-            "src": "/path/to/file",
-            "type": "file"
-          ]] as [[String : Any]]
-
+    func withFileBody(attachments: [AttachmentFile]) -> ApiCaller {
         let boundary = "Boundary-\(UUID().uuidString)"
+        
         var body = ""
-        var error: Error? = nil
-        for param in parameters {
-          if param["disabled"] == nil {
-            let paramName = param["key"]!
+        for attachment in attachments {
             body += "--\(boundary)\r\n"
-            body += "Content-Disposition:form-data; name=\"\(paramName)\""
-            if param["contentType"] != nil {
-              body += "\r\nContent-Type: \(param["contentType"] as! String)"
-            }
-            let paramType = param["type"] as! String
-            if paramType == "text" {
-              let paramValue = param["value"] as! String
-              body += "\r\n\r\n\(paramValue)\r\n"
-            } else {
-              let paramSrc = param["src"] as! String
-              let fileContent = String(data: imageBody, encoding: .utf8)
-              body += "; filename=\"\(paramSrc)\"\r\n"
-                + "Content-Type: \"content-type header\"\r\n\r\n\(fileContent)\r\n"
-            }
-          }
+            body += "Content-Disposition:form-data; name=\"\(attachment.key)\""
+            let fileContent = String(data: attachment.fileDate, encoding: .utf8)
+            body += "; filename=\"\(attachment.filename)\"\r\n"
+            body += "Content-Type: \"content-type header\"\r\n"
+            body += "\r\n\(fileContent)\r\n"
         }
         body += "--\(boundary)--\r\n";
-        let postData = body.data(using: .utf8)
         request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        request.httpBody = postData
+        request.httpBody = body.data(using: .utf8)
         return self
     }
-    
-    fileprivate func createRequestBody(imageData: Data, boundary: String, attachmentKey: String, fileName: String) -> Data{
-            let lineBreak = "\r\n"
-            var requestBody = Data()
-            requestBody.append("\(lineBreak)--\(boundary + lineBreak)" .data(using: .utf8)!)
-            requestBody.append("Content-Disposition: form-data; name=\"\(attachmentKey)\"; filename=\"\(fileName)\"\(lineBreak)" .data(using: .utf8)!)
-            requestBody.append("Content-Type: image/jpeg \(lineBreak + lineBreak)" .data(using: .utf8)!)
-            requestBody.append(imageData)
-            requestBody.append("\(lineBreak)--\(boundary)--\(lineBreak)" .data(using: .utf8)!)
-            return requestBody
-        }
     
     func execute(_ completion: @escaping (Data?, Error?) -> Void) {
         let task = URLSession.shared.dataTask(with: request) { data, response, err in
