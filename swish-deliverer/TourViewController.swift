@@ -161,6 +161,16 @@ extension TourViewController: UITableViewDataSource, UITableViewDelegate {
             guard let parcel = self.tour?.parcels[indexPath.row] else {
                 return
             }
+            guard let parcelCoordinate = parcel.coordinate else {
+                return
+            }
+            let myLocation = CLLocation(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude)
+            let parcelLocation = CLLocation(latitude: parcelCoordinate.coordinate.latitude, longitude: parcelCoordinate.coordinate.longitude)
+            let distance = myLocation.distance(from: parcelLocation)
+            if distance > 200 {
+                self.showErrorAlertWithMessage(NSLocalizedString(LocalizedStringKeys.distance_delivery_invalid.rawValue, comment: ""))
+                return
+            }
             self.parcelToDelivered = parcel
             guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
                 return
@@ -202,18 +212,15 @@ extension TourViewController: MKMapViewDelegate {
 extension TourViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
  
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
         showLoadingAlert()
         guard let image = info[.editedImage] as? UIImage else {
             self.dismissLoadingAlert {
-                self.showErrorAlertWithMessage("No image")
             }
             return
         }
         guard let imageData = image.pngData(),
               let parcel = parcelToDelivered else {
             self.dismissLoadingAlert {
-                self.showErrorAlertWithMessage("No parcel")
             }
             return
         }

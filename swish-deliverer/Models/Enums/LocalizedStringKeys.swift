@@ -38,5 +38,6 @@ enum LocalizedStringKeys: String {
     case open_prefs
     case no_parcels
     case delivery_parcel
+    case distance_delivery_invalid
     
 }

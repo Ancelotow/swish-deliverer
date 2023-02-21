@@ -26,5 +26,6 @@
 "enable_location_in_phone_prefs" = "Enable location in phone preferences";
 "open_prefs" = "Open preferences";
 "delivery_parcel" = "Delivery...";
+"distance_delivery_invalid" = "Invalid delivery distance (min. 200m)";
 "no_parcels" = "You have no delivery at the moment
 So take a break 🙂";
