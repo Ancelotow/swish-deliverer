@@ -16,10 +16,12 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var labelParcels: UILabel!
     @IBOutlet weak var tableParcels: UITableView!
     @IBOutlet weak var labelNoParcels: UILabel!
+    var loadingAlert: UIAlertController? = nil
     var locationManager: CLLocationManager?
     var coordinate: CLLocationCoordinate2D!
     var parcelToDelivered: Parcel?
     let tourService: TourService = TourApiService()
+    var timer: Timer?
     var tour: Tour? {
         didSet {
             self.tableParcels.reloadData()
@@ -36,6 +38,13 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
         self.tableParcels.delegate = self
         self.tableParcels.rowHeight = 90.0
         self.labelParcels.text = NSLocalizedString(LocalizedStringKeys.my_parcels.rawValue, comment: "")
+        self.loadDatas()
+    }
+    
+    func loadDatas() {
+        if self.timer != nil {
+            self.timer = nil
+        }
         tourService.getCurrentTour { tour, err in
             guard err == nil else {
                 return
@@ -56,7 +65,7 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
                 for parcel in self.tour!.parcels {
                     self.addMarkerFromParcel(parcel: parcel)
                 }
-                Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.handleMoveUser), userInfo: nil, repeats: true)
+                self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.handleMoveUser), userInfo: nil, repeats: true)
             }
         }
     }
@@ -84,6 +93,14 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    func dismissLoadingAlert(_ completion: @escaping () -> Void) {
+        guard let alert = self.loadingAlert else {
+            return
+        }
+        alert.dismiss(animated: true, completion: completion)
+        self.loadingAlert = nil
+    }
+    
     func askLocationPermission() {
         let manager = CLLocationManager()
         manager.delegate = self
@@ -92,6 +109,17 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
             
         }
         self.locationManager = manager
+    }
+    
+    func showLoadingAlert() {
+        let deliveryMsg = NSLocalizedString(LocalizedStringKeys.delivery_parcel.rawValue, comment: "")
+        self.loadingAlert = UIAlertController(title: nil, message: deliveryMsg, preferredStyle: .alert)
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.medium
+        loadingIndicator.startAnimating();
+        self.loadingAlert!.view.addSubview(loadingIndicator)
+        present(self.loadingAlert!, animated: true, completion: nil)
     }
     
     @objc func handleMoveUser()
@@ -133,7 +161,6 @@ extension TourViewController: UITableViewDataSource, UITableViewDelegate {
             guard let parcel = self.tour?.parcels[indexPath.row] else {
                 return
             }
-            parcel.delivered()
             self.parcelToDelivered = parcel
             guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
                 return
@@ -148,6 +175,14 @@ extension TourViewController: UITableViewDataSource, UITableViewDelegate {
         editAction.backgroundColor = .systemGreen
 
         return [editAction]
+    }
+    
+    func showErrorAlertWithMessage(_ message: String) {
+        let title = NSLocalizedString(LocalizedStringKeys.invalid.rawValue, comment: "")
+        let closeTitle = NSLocalizedString(LocalizedStringKeys.close.rawValue, comment: "")
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: closeTitle, style: .cancel))
+        self.present(alert, animated: true)
     }
     
 }
@@ -167,18 +202,34 @@ extension TourViewController: MKMapViewDelegate {
 extension TourViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
  
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        showLoadingAlert()
         guard let image = info[.editedImage] as? UIImage else {
+            self.dismissLoadingAlert {
+                self.showErrorAlertWithMessage("No image")
+            }
             return
         }
         guard let imageData = image.pngData(),
               let parcel = parcelToDelivered else {
+            self.dismissLoadingAlert {
+                self.showErrorAlertWithMessage("No parcel")
+            }
             return
         }
+        parcel.delivered()
         tourService.deliverParcel(parcel: parcel, proofData: imageData) { err in
-            guard err == nil else {
-                return
+            DispatchQueue.main.async {
+                self.dismissLoadingAlert {
+                    guard err == nil else {
+                        let unknowErr = NSLocalizedString(LocalizedStringKeys.unknow_error.rawValue, comment: "")
+                        let message = (err as? NSError)?.localizedFailureReason ?? unknowErr
+                        self.showErrorAlertWithMessage(message)
+                        return
+                    }
+                    self.loadDatas()
+                }
             }
-            print("cooool")
         }
         picker.dismiss(animated: true)
     }

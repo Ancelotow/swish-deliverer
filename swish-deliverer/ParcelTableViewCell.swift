@@ -15,6 +15,7 @@ class ParcelTableViewCell: UITableViewCell {
     @IBOutlet weak var labelDistance: UILabel!
     @IBOutlet weak var labelDateDelivery: UILabel!
     @IBOutlet weak var labelDelivery: UILabel!
+    let tourService: TourService = TourApiService()
     var parcel: Parcel!
     
     override func awakeFromNib() {

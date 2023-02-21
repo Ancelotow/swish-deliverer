@@ -47,6 +47,7 @@ class Parcel {
     }
     
     func delivered() {
+        
         self.dateDelivered = Date.now
         self.isDelivered = true
     }
