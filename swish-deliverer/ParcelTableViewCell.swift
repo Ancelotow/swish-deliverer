@@ -15,6 +15,7 @@ class ParcelTableViewCell: UITableViewCell {
     @IBOutlet weak var labelDistance: UILabel!
     @IBOutlet weak var labelDateDelivery: UILabel!
     @IBOutlet weak var labelDelivery: UILabel!
+    @IBOutlet weak var iconParcel: UIImageView!
     let tourService: TourService = TourApiService()
     var parcel: Parcel!
     
@@ -28,16 +29,12 @@ class ParcelTableViewCell: UITableViewCell {
     }
     
     fileprivate func showDeliveredInformations() {
-        if(parcel.isDelivered && parcel.dateDelivered != nil) {
-            labelDelivery.isHidden = false
-            labelDateDelivery.isHidden = false
-            let formatter = DateFormatter()
-            formatter.dateFormat = NSLocalizedString(LocalizedStringKeys.date_format.rawValue, comment: "")
-            labelDateDelivery.text = formatter.string(from: parcel.dateDelivered!)
-        } else {
-            labelDelivery.isHidden = true
-            labelDateDelivery.isHidden = true
-        }
+        labelDelivery.isHidden = false
+        labelDateDelivery.isHidden = false
+        let formatter = DateFormatter()
+        formatter.dateFormat = NSLocalizedString(LocalizedStringKeys.date_format.rawValue, comment: "")
+        labelDateDelivery.text = formatter.string(from: parcel.dateDelivered!)
+        labelDistance.text = NSLocalizedString(LocalizedStringKeys.delivered.rawValue, comment: "")
     }
     
     fileprivate func updateDistance(userPosition: CLLocationCoordinate2D) {
@@ -54,7 +51,7 @@ class ParcelTableViewCell: UITableViewCell {
             }
             
         } else {
-            labelDistance.text = "Distance inconnue"
+            labelDistance.text = NSLocalizedString(LocalizedStringKeys.unknow_distance.rawValue, comment: "")
         }
     }
     
@@ -62,8 +59,17 @@ class ParcelTableViewCell: UITableViewCell {
         self.parcel = parcel
         labelFullname.text = parcel.getFullname()
         labelAddressStreet.text = parcel.getFullAddress()
-        showDeliveredInformations()
-        updateDistance(userPosition: userPosition)
+        if parcel.isDelivered && parcel.dateDelivered != nil {
+            showDeliveredInformations()
+            iconParcel.image = UIImage(systemName: "cube.box.fill")
+            iconParcel.tintColor = .systemGreen
+        } else {
+            labelDelivery.isHidden = true
+            labelDateDelivery.isHidden = true
+            iconParcel.image = UIImage(systemName: "box.truck.badge.clock.fill")
+            iconParcel.tintColor = .systemOrange
+            updateDistance(userPosition: userPosition)
+        }
     }
     
 }

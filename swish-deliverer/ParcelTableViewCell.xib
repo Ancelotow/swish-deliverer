@@ -35,8 +35,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cube.box.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ba5-Li-gaE">
-                        <rect key="frame" x="5" y="13" width="60" height="60"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="box.truck.badge.clock.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ba5-Li-gaE">
+                        <rect key="frame" x="5" y="11.333333333333332" width="60" height="61.333333333333343"/>
                         <color key="tintColor" systemColor="systemOrangeColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="60" id="3S7-ov-iTr"/>
@@ -73,6 +73,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="iconParcel" destination="ba5-Li-gaE" id="a4i-B1-fwa"/>
                 <outlet property="labelAddressStreet" destination="8ek-bv-07s" id="yMT-yr-EuQ"/>
                 <outlet property="labelDateDelivery" destination="U6l-CR-hKc" id="NIF-Dt-1Y6"/>
                 <outlet property="labelDelivery" destination="DbS-03-CbE" id="bBo-mK-Gl3"/>
@@ -83,7 +84,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="cube.box.fill" catalog="system" width="128" height="123"/>
+        <image name="box.truck.badge.clock.fill" catalog="system" width="128" height="97"/>
         <systemColor name="systemOrangeColor">
             <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

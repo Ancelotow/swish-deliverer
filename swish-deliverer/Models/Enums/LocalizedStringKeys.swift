@@ -41,5 +41,7 @@ enum LocalizedStringKeys: String {
     case distance_delivery_invalid
     case to_deliver
     case to_call
+    case delivered
+    case unknow_distance
     
 }

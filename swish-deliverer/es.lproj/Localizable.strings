@@ -28,6 +28,8 @@
 "enable_location_in_phone_prefs" = "Habilitar la ubicación en las preferencias del teléfono";
 "open_prefs" = "Abrir preferencias";
 "delivery_parcel" = "Lentrega...";
+"delivered" = "Entregado";
+"unknow_distance" = "Distancia desconocida";
 "distance_delivery_invalid" = "Distancia de entrega no válida (min. 200m)";
 "no_parcels" = "No tienes entrega en este momento
 Así que tómate un descanso 🙂";

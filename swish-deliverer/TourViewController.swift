@@ -30,6 +30,7 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.setHidesBackButton(true, animated: true)
         askLocationPermission()
         let parcelCell = UINib(nibName: "ParcelTableViewCell", bundle: nil)
         self.mapView.setRegion(MKCoordinateRegion(center: self.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000), animated: true)
@@ -42,6 +43,7 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func loadDatas() {
+        self.resetAnnotations()
         if self.timer != nil {
             self.timer = nil
         }
@@ -83,12 +85,15 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func addMarkerFromParcel(parcel: Parcel) {
-        parcel.initLocation() {
-            if let coordinate = parcel.coordinate {
-                let marker = MKPointAnnotation()
-                marker.coordinate = coordinate.coordinate
-                marker.title = parcel.getFullname()
-                self.mapView.addAnnotation(marker)
+        if !parcel.isDelivered {
+            parcel.initLocation() {
+                if let coordinate = parcel.coordinate {
+                    let marker = MKPointAnnotation()
+                    marker.coordinate = coordinate.coordinate
+                    marker.title = parcel.getFullname()
+                    marker.subtitle = parcel.getFullAddress()
+                    self.mapView.addAnnotation(marker)
+                }
             }
         }
     }
@@ -230,6 +235,13 @@ extension TourViewController: MKMapViewDelegate {
         pinAnnotation.canShowCallout = true
         pinAnnotation.markerTintColor = .orange
         return pinAnnotation
+    }
+    
+    func resetAnnotations() {
+        let annotations = mapView.annotations.filter {
+                $0 !== self.mapView.userLocation
+        }
+        mapView.removeAnnotations(annotations)
     }
 }
 

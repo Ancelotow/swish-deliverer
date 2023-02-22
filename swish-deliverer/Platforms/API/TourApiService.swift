@@ -59,7 +59,7 @@ class TourApiService: TourService {
             return
         }
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-ddTHH:mm:ss"
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         let dateStr = formatter.string(from: parcel.dateDelivered!)
         let endpoint = "parcel/\(parcel.uuid)/delivery?date=\(dateStr)"
         let attachments = [
