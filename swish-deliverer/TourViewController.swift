@@ -16,6 +16,8 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var labelParcels: UILabel!
     @IBOutlet weak var tableParcels: UITableView!
     @IBOutlet weak var labelNoParcels: UILabel!
+    @IBOutlet weak var labelTourState: UILabel!
+    @IBOutlet weak var profilImage: UIImageView!
     var loadingAlert: UIAlertController? = nil
     var locationManager: CLLocationManager?
     var coordinate: CLLocationCoordinate2D!
@@ -33,6 +35,7 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true)
         askLocationPermission()
+        self.loadProfileImage()
         let parcelCell = UINib(nibName: "ParcelTableViewCell", bundle: nil)
         self.mapView.setRegion(MKCoordinateRegion(center: self.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000), animated: true)
         self.tableParcels.register(parcelCell, forCellReuseIdentifier: TourViewController.parcelCellId)
@@ -41,6 +44,37 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
         self.tableParcels.rowHeight = 90.0
         self.labelParcels.text = NSLocalizedString(LocalizedStringKeys.my_parcels.rawValue, comment: "")
         self.loadDatas()
+    }
+    
+    func loadProfileImage() {
+        self.profilImage.isHidden = true
+        if let uuid = Session.getSession()?.uuid {
+            self.profilImage.isHidden = false
+            self.profilImage.layer.cornerRadius = self.profilImage.frame.size.width / 2;
+            delivererService.getProfilePhoto(uuid: uuid) { image, err in
+                guard err == nil else {
+                    return
+                }
+                if let image = image {
+                    DispatchQueue.main.async {
+                        self.profilImage.image = image
+                    }
+                }
+            }
+        }
+    }
+    
+    func updateState(state: TourState) {
+        guard let tour = self.tour else {
+            return
+        }
+        self.tourService.updateState(id: tour.id, state: state) { err in
+            DispatchQueue.main.async {
+                guard err == nil else {
+                    return
+                }
+            }
+        }
     }
     
     func loadDatas() {
@@ -57,18 +91,29 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
                     self.showNoParcelMessage()
                     return
                 }
-                
                 self.tour = tour
+                
                 if(self.tour!.parcels.isEmpty) {
                     self.showNoParcelMessage()
                 }
                 
                 self.labelNoParcels.isHidden = true
                 self.tableParcels.isHidden = false
+                var allParcelDelivered = true
                 for parcel in self.tour!.parcels {
                     self.addMarkerFromParcel(parcel: parcel)
+                    if parcel.isDelivered {
+                        allParcelDelivered = false
+                    }
                 }
-                self.timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.handleMoveUser), userInfo: nil, repeats: true)
+                if allParcelDelivered {
+                    self.labelTourState.text = NSLocalizedString(LocalizedStringKeys.tour_finished.rawValue, comment: "")
+                    self.updateState(state: TourState.done)
+                } else {
+                    self.labelTourState.text = NSLocalizedString(LocalizedStringKeys.tour_in_progress.rawValue, comment: "")
+                    self.updateState(state: TourState.in_process)
+                }
+                self.timer = Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.handleMoveUser), userInfo: nil, repeats: true)
             }
         }
     }
@@ -76,6 +121,7 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
     func showNoParcelMessage() {
         self.tableParcels.isHidden = true
         self.labelNoParcels.isHidden = false
+        self.labelTourState.isHidden = true
         self.labelNoParcels.text = NSLocalizedString(LocalizedStringKeys.no_parcels.rawValue, comment: "")
     }
     
@@ -139,6 +185,8 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
         alert.addAction(UIAlertAction(title: closeTitle, style: .cancel))
         self.present(alert, animated: true)
     }
+    
+    
     
     @objc func handleMoveUser()
     {

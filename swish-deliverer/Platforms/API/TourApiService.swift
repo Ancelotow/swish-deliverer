@@ -77,4 +77,22 @@ class TourApiService: TourService {
         }
     }
     
+    func updateState(id: Int, state: TourState, _ completion: @escaping (Error?) -> Void) {
+        guard let token = Session.getSession()?.token else {
+            completion(NSError(domain: AppInstance.getInstance().idBundle, code: ErrorCode.notConnected.hashValue, userInfo: [
+                NSLocalizedFailureReasonErrorKey: NSLocalizedString(LocalizedStringKeys.no_login_token.rawValue, comment: "")
+            ]))
+            return
+        }
+        let endpoint = "tours/\(id)/state?state=\(state.rawValue)"
+        let apiCaller = ApiCaller(endpoint: endpoint, method: HttpMethod.PATCH).withJwtToken(token: token);
+        apiCaller.execute() { data, err in
+            guard err == nil else {
+                completion(err)
+                return
+            }
+            completion(nil)
+        }
+    }
+    
 }

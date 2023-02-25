@@ -14,5 +14,6 @@ enum SessionKeys: String {
     case firstname
     case email
     case deliveryPerson
+    case uuid
     
 }

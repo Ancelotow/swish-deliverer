@@ -15,6 +15,8 @@
 "to_deliver" = "Entregar";
 "to_call" = "Llamar";
 "connection_loding" = "Conexión...";
+"tour_finished" = "Finalizada";
+"tour_in_progress" = "En curso...";
 "logins_required" = "Se requiere nombre de usuario y contraseña";
 "unknow_error" = "Error desconocido";
 "http_internal_server_error" = "Error Interno del Servidor (error 500)";
@@ -31,5 +33,4 @@
 "delivered" = "Entregado";
 "unknow_distance" = "Distancia desconocida";
 "distance_delivery_invalid" = "Distancia de entrega no válida (min. 200m)";
-"no_parcels" = "No tienes entrega en este momento
-Así que tómate un descanso 🙂";
+"no_parcels" = "No tienes entrega en este momento\nAsí que tómate un descanso 🙂";

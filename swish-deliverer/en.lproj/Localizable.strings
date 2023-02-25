@@ -14,6 +14,8 @@
 "close" = "Close";
 "to_deliver" = "Deliver";
 "to_call" = "Call";
+"tour_finished" = "Finished";
+"tour_in_progress" = "In progress...";
 "connection_loding" = "Connection...";
 "logins_required" = "Username and password are required";
 "unknow_error" = "Unknow error";
@@ -31,5 +33,4 @@
 "distance_delivery_invalid" = "Invalid delivery distance (min. 200m)";
 "delivered" = "Delivered";
 "unknow_distance" = "Unknow distance";
-"no_parcels" = "You have no delivery at the moment
-So take a break 🙂";
+"no_parcels" = "You have no delivery at the moment\nSo take a break 🙂";

@@ -14,12 +14,14 @@ class Session {
     let name: String
     let firstname: String
     let email: String
+    let uuid: UUID
     
-    fileprivate init(token: String, name: String, firstname: String, email: String) {
+    fileprivate init(token: String, name: String, firstname: String, email: String, uuid: UUID) {
         self.token = token
         self.name = name
         self.firstname = firstname
         self.email = email
+        self.uuid = uuid
     }
 
     class func open(dict: [String:Any]) -> Bool {
@@ -31,11 +33,15 @@ class Session {
             return false
         }
         guard let name = deliveryPerson[SessionKeys.name.rawValue] as? String,
+              let uuidStr = deliveryPerson[SessionKeys.uuid.rawValue] as? String,
               let firstname = deliveryPerson[SessionKeys.firstname.rawValue] as? String,
               let email = deliveryPerson[SessionKeys.email.rawValue] as? String else {
             return false
         }
-        session = Session(token: token, name: name, firstname: firstname, email: email)
+        guard let uuid = UUID(uuidString: uuidStr) else {
+            return false
+        }
+        session = Session(token: token, name: name, firstname: firstname, email: email, uuid: uuid)
         return true
     }
     

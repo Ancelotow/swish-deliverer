@@ -13,6 +13,8 @@
 "invalid" = "Invalide";
 "close" = "Fermer";
 "to_deliver" = "Livrer";
+"tour_finished" = "Finis";
+"tour_in_progress" = "En cours...";
 "to_call" = "Appeler";
 "connection_loding" = "Connexion...";
 "logins_required" = "L'identifiant et le mot de passes sont obligatoires";
@@ -31,5 +33,4 @@
 "delivered" = "Livré";
 "unknow_distance" = "Distance inconnue";
 "distance_delivery_invalid" = "Distance de livraison invalide (min. 200m)";
-"no_parcels" = "Vous n'avez pas de livraison pour le moment
-Prenez donc une pause 🙂";
+"no_parcels" = "Vous n'avez pas de livraison pour le moment\nPrenez donc une pause 🙂";
