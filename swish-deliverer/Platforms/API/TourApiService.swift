@@ -17,7 +17,7 @@ class TourApiService: TourService {
             ]))
             return
         }
-        let apiCaller = ApiCaller(endpoint: "current-delivery-tour", method: HttpMethod.GET).withJwtToken(token: token);
+        let apiCaller = ApiCaller(endpoint: "tours/mine", method: HttpMethod.GET).withJwtToken(token: token);
         apiCaller.execute() { data, err in
             guard err == nil else {
                 completion(nil, err)

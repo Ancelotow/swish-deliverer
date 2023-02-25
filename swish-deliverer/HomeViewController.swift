@@ -76,7 +76,6 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func signIn(_ sender: Any) {
-        //self.authenticate()
         guard let login = loginTextField.text,
               let password = passwordTextField.text,
               !login.isEmpty, !password.isEmpty  else {
@@ -110,28 +109,6 @@ class HomeViewController: UIViewController {
             self.navigationController?.pushViewController(controller, animated: true)
         } else {
             displayDeniedMessage()
-        }
-    }
-    
-    func authenticate() {
-        context = LAContext()
-        context.localizedCancelTitle = "Enter Username/Password"
-
-        // First check if we have the needed hardware support.
-        var error: NSError?
-        guard context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) else {
-            print(error?.localizedDescription ?? "Can't evaluate policy")
-
-            // Fall back to a asking for username and password.
-            // ...
-            return
-        }
-        Task {
-            do {
-                try await context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Log in to your account")
-            } catch let error {
-                print(error.localizedDescription)
-            }
         }
     }
     

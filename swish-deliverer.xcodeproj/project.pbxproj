@@ -14,6 +14,8 @@
 		A5C66A0C29A10D09007AAE28 /* ParcelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C66A0A29A10D09007AAE28 /* ParcelTableViewCell.swift */; };
 		A5C66A0D29A10D09007AAE28 /* ParcelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5C66A0B29A10D09007AAE28 /* ParcelTableViewCell.xib */; };
 		A5C66A0F29A56567007AAE28 /* AttachmentFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C66A0E29A56567007AAE28 /* AttachmentFile.swift */; };
+		A5C66A1129AA93D2007AAE28 /* DelivererApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C66A1029AA93D2007AAE28 /* DelivererApiService.swift */; };
+		A5C66A1329AA940D007AAE28 /* DelivererService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C66A1229AA940D007AAE28 /* DelivererService.swift */; };
 		A5E1DC902965DD59000BFC80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1DC8F2965DD59000BFC80 /* AppDelegate.swift */; };
 		A5E1DC992965DD5A000BFC80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5E1DC982965DD5A000BFC80 /* Assets.xcassets */; };
 		A5E1DC9C2965DD5A000BFC80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5E1DC9A2965DD5A000BFC80 /* LaunchScreen.storyboard */; };
@@ -65,6 +67,8 @@
 		A5C66A0A29A10D09007AAE28 /* ParcelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParcelTableViewCell.swift; sourceTree = "<group>"; };
 		A5C66A0B29A10D09007AAE28 /* ParcelTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParcelTableViewCell.xib; sourceTree = "<group>"; };
 		A5C66A0E29A56567007AAE28 /* AttachmentFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentFile.swift; sourceTree = "<group>"; };
+		A5C66A1029AA93D2007AAE28 /* DelivererApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelivererApiService.swift; sourceTree = "<group>"; };
+		A5C66A1229AA940D007AAE28 /* DelivererService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelivererService.swift; sourceTree = "<group>"; };
 		A5E1DC8C2965DD59000BFC80 /* swish-deliverer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swish-deliverer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5E1DC8F2965DD59000BFC80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5E1DC982965DD5A000BFC80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -230,6 +234,7 @@
 			children = (
 				A5E1DCE3296633AF000BFC80 /* ConnectionService.swift */,
 				A5F6EA5E296F50AD000AA989 /* TourService.swift */,
+				A5C66A1229AA940D007AAE28 /* DelivererService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -253,6 +258,7 @@
 				A5E1DCEB296CAEE1000BFC80 /* ConnectionApiService.swift */,
 				A5F6EA68296F56DA000AA989 /* TourApiService.swift */,
 				A5C66A0129A0F6AC007AAE28 /* ApiCaller.swift */,
+				A5C66A1029AA93D2007AAE28 /* DelivererApiService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -398,6 +404,7 @@
 				A5F6EA61296F50F4000AA989 /* Tour.swift in Sources */,
 				A5C66A0C29A10D09007AAE28 /* ParcelTableViewCell.swift in Sources */,
 				A5E1DCEE296CB2D4000BFC80 /* AppInstance.swift in Sources */,
+				A5C66A1329AA940D007AAE28 /* DelivererService.swift in Sources */,
 				A5E1DCF1296CC62B000BFC80 /* TourViewController.swift in Sources */,
 				A5E1DCE72966376F000BFC80 /* SessionKeys.swift in Sources */,
 				A5C66A0F29A56567007AAE28 /* AttachmentFile.swift in Sources */,
@@ -407,6 +414,7 @@
 				A5F6EA63296F514F000AA989 /* Parcel.swift in Sources */,
 				A5F6EA5F296F50AD000AA989 /* TourService.swift in Sources */,
 				A5C66A0729A0F9F6007AAE28 /* HttpMethod.swift in Sources */,
+				A5C66A1129AA93D2007AAE28 /* DelivererApiService.swift in Sources */,
 				A5F6EA65296F527F000AA989 /* ParcelKeys.swift in Sources */,
 				A5F6EA69296F56DA000AA989 /* TourApiService.swift in Sources */,
 				A5E1DCDD2966248A000BFC80 /* LocalizedStringKeys.swift in Sources */,

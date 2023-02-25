@@ -21,6 +21,7 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
     var coordinate: CLLocationCoordinate2D!
     var parcelToDelivered: Parcel?
     let tourService: TourService = TourApiService()
+    let delivererService: DelivererService = DelivererApiService()
     var timer: Timer?
     var tour: Tour? {
         didSet {
@@ -111,9 +112,13 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
         manager.delegate = self
         if manager.authorizationStatus == .notDetermined {
             manager.requestWhenInUseAuthorization()
-            
         }
         self.locationManager = manager
+        if let locationManager = self.locationManager {
+            if let location = locationManager.location {
+                self.coordinate = location.coordinate
+            }
+        }
     }
     
     func showLoadingAlert() {
@@ -143,9 +148,18 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
                  guard let parcel = self.tour?.parcels[indexPath.row] else {
                      return
                  }
-                 (self.tableParcels.cellForRow(at: indexPath) as! ParcelTableViewCell).redraw(parcel: parcel, userPosition: self.coordinate)
+                 let cell = self.tableParcels.cellForRow(at: indexPath) as! ParcelTableViewCell
+                 cell.redraw(parcel: parcel, userPosition: self.coordinate)
              }
          }
+        self.delivererService.updateMyPosition(position: self.coordinate) { err in
+            guard err == nil else {
+                let unknowErr = NSLocalizedString(LocalizedStringKeys.unknow_error.rawValue, comment: "")
+                let message = (err as? NSError)?.localizedFailureReason ?? unknowErr
+                self.showErrorAlertWithMessage(message)
+                return
+            }
+        }
     }
     
 }
