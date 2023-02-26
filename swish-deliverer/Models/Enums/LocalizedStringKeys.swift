@@ -48,5 +48,6 @@ enum LocalizedStringKeys: String {
     case username
     case birthday
     case email
+    case logout
     
 }

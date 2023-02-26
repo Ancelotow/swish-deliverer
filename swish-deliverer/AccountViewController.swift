@@ -21,6 +21,9 @@ class AccountViewController: UIViewController {
         super.viewDidLoad()
         self.loadInformations()
         self.loadProfileImage()
+        self.navigationItem.rightBarButtonItems = [
+            self.logout()
+        ]
     }
     
     func loadInformations() {
@@ -56,6 +59,17 @@ class AccountViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    fileprivate func logout() -> UIBarButtonItem {
+        var button =  UIBarButtonItem(systemItem: .close, primaryAction: UIAction(handler: { _ in
+            Session.close()
+            self.navigationController?.popToRootViewController(animated: true)
+        }))
+        button.image = UIImage(systemName: "power")
+        button.tintColor = .systemRed
+        button.title = NSLocalizedString(LocalizedStringKeys.logout.rawValue, comment: "")
+        return button
     }
 
 }

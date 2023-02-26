@@ -334,8 +334,8 @@
             filePath = "swish-deliverer/AccountViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
             landmarkName = "AccountViewController"
             landmarkType = "3">
          </BreakpointContent>

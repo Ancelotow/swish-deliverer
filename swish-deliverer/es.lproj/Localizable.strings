@@ -37,3 +37,4 @@
 "username" = "Identificador";
 "birthday" = "Fecha de nacimiento";
 "email" = "Correo electrónico";
+"logout" = "Cerrar sesión";
