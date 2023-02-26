@@ -34,7 +34,7 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true)
-        askLocationPermission()
+        self.askLocationPermission()
         self.loadProfileImage()
         let parcelCell = UINib(nibName: "ParcelTableViewCell", bundle: nil)
         self.mapView.setRegion(MKCoordinateRegion(center: self.coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000), animated: true)
@@ -49,6 +49,9 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
     func loadProfileImage() {
         self.profilImage.isHidden = true
         if let uuid = Session.getSession()?.uuid {
+            let clickProfileGesture = UITapGestureRecognizer(target: self, action: #selector(clickProfileGesture(gesture:)))
+            self.profilImage.isUserInteractionEnabled = true
+            self.profilImage.addGestureRecognizer(clickProfileGesture)
             self.profilImage.isHidden = false
             self.profilImage.layer.cornerRadius = self.profilImage.frame.size.width / 2;
             delivererService.getProfilePhoto(uuid: uuid) { image, err in
@@ -62,6 +65,10 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
                 }
             }
         }
+    }
+    
+    @objc func clickProfileGesture(gesture: UITapGestureRecognizer) {
+        self.navigationController?.pushViewController(AccountViewController(), animated: true)
     }
     
     func updateState(state: TourState) {
@@ -102,7 +109,7 @@ class TourViewController: UIViewController, CLLocationManagerDelegate {
                 var allParcelDelivered = true
                 for parcel in self.tour!.parcels {
                     self.addMarkerFromParcel(parcel: parcel)
-                    if parcel.isDelivered {
+                    if !parcel.isDelivered {
                         allParcelDelivered = false
                     }
                 }
@@ -265,7 +272,7 @@ extension TourViewController: UITableViewDataSource, UITableViewDelegate {
             let myLocation = CLLocation(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude)
             let parcelLocation = CLLocation(latitude: parcelCoordinate.coordinate.latitude, longitude: parcelCoordinate.coordinate.longitude)
             let distance = myLocation.distance(from: parcelLocation)
-            if distance > 200 {
+            if distance > 3000000000 {
                 self.showErrorAlertWithMessage(NSLocalizedString(LocalizedStringKeys.distance_delivery_invalid.rawValue, comment: ""))
                 return
             }

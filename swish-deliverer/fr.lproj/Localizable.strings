@@ -34,3 +34,6 @@
 "unknow_distance" = "Distance inconnue";
 "distance_delivery_invalid" = "Distance de livraison invalide (min. 200m)";
 "no_parcels" = "Vous n'avez pas de livraison pour le moment\nPrenez donc une pause 🙂";
+"username" = "Identifiant";
+"birthday" = "Date de naissance";
+"email" = "Adresse mil";

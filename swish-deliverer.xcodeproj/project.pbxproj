@@ -17,6 +17,8 @@
 		A5C66A1129AA93D2007AAE28 /* DelivererApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C66A1029AA93D2007AAE28 /* DelivererApiService.swift */; };
 		A5C66A1329AA940D007AAE28 /* DelivererService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C66A1229AA940D007AAE28 /* DelivererService.swift */; };
 		A5C66A1529AABA30007AAE28 /* TourState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C66A1429AABA30007AAE28 /* TourState.swift */; };
+		A5C66A1829AAD128007AAE28 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5C66A1629AAD128007AAE28 /* AccountViewController.swift */; };
+		A5C66A1929AAD128007AAE28 /* AccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5C66A1729AAD128007AAE28 /* AccountViewController.xib */; };
 		A5E1DC902965DD59000BFC80 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5E1DC8F2965DD59000BFC80 /* AppDelegate.swift */; };
 		A5E1DC992965DD5A000BFC80 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5E1DC982965DD5A000BFC80 /* Assets.xcassets */; };
 		A5E1DC9C2965DD5A000BFC80 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5E1DC9A2965DD5A000BFC80 /* LaunchScreen.storyboard */; };
@@ -71,6 +73,8 @@
 		A5C66A1029AA93D2007AAE28 /* DelivererApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelivererApiService.swift; sourceTree = "<group>"; };
 		A5C66A1229AA940D007AAE28 /* DelivererService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelivererService.swift; sourceTree = "<group>"; };
 		A5C66A1429AABA30007AAE28 /* TourState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TourState.swift; sourceTree = "<group>"; };
+		A5C66A1629AAD128007AAE28 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		A5C66A1729AAD128007AAE28 /* AccountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountViewController.xib; sourceTree = "<group>"; };
 		A5E1DC8C2965DD59000BFC80 /* swish-deliverer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "swish-deliverer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5E1DC8F2965DD59000BFC80 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A5E1DC982965DD5A000BFC80 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -171,6 +175,8 @@
 				A5E1DCF0296CC62B000BFC80 /* TourViewController.xib */,
 				A5C66A0A29A10D09007AAE28 /* ParcelTableViewCell.swift */,
 				A5C66A0B29A10D09007AAE28 /* ParcelTableViewCell.xib */,
+				A5C66A1629AAD128007AAE28 /* AccountViewController.swift */,
+				A5C66A1729AAD128007AAE28 /* AccountViewController.xib */,
 			);
 			path = "swish-deliverer";
 			sourceTree = "<group>";
@@ -378,6 +384,7 @@
 				A57CEC89298D5ED90045D5EB /* Info.plist in Resources */,
 				A5E1DC992965DD5A000BFC80 /* Assets.xcassets in Resources */,
 				A5E1DCE129662CBE000BFC80 /* HomeViewController.xib in Resources */,
+				A5C66A1929AAD128007AAE28 /* AccountViewController.xib in Resources */,
 				A5E1DCF2296CC62B000BFC80 /* TourViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,6 +411,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5B69D572974289F00157B92 /* DateConverter.swift in Sources */,
+				A5C66A1829AAD128007AAE28 /* AccountViewController.swift in Sources */,
 				A5F6EA61296F50F4000AA989 /* Tour.swift in Sources */,
 				A5C66A0C29A10D09007AAE28 /* ParcelTableViewCell.swift in Sources */,
 				A5E1DCEE296CB2D4000BFC80 /* AppInstance.swift in Sources */,

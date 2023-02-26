@@ -31,21 +31,17 @@ class ApiCaller {
         return self
     }
     
-    func withFileBody(attachments: [AttachmentFile]) -> ApiCaller {
-        let boundary = "Boundary-\(UUID().uuidString)"
-        
-        var body = ""
-        for attachment in attachments {
-            body += "--\(boundary)\r\n"
-            body += "Content-Disposition:form-data; name=\"\(attachment.key)\""
-            let fileContent = String(data: attachment.fileDate, encoding: .utf8)
-            body += "; filename=\"\(attachment.filename)\"\r\n"
-            body += "Content-Type: \"content-type header\"\r\n"
-            body += "\r\n\(fileContent)\r\n"
-        }
-        body += "--\(boundary)--\r\n";
-        request.addValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-        request.httpBody = body.data(using: .utf8)
+    func withFileBody(attachment: AttachmentFile) -> ApiCaller {
+        let boundary = UUID().uuidString
+        var body = Data()
+        body.append("--\(boundary)\r\n".data(using: .utf8)!)
+        body.append("Content-Disposition: form-data; name=\"\(attachment.key)\"; filename=\"\(attachment.filename)\"\r\n".data(using: .utf8)!)
+        body.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
+        body.append(attachment.fileDate)
+        body.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
+        let contentType = "multipart/form-data; boundary=\(boundary)"
+        request.setValue(contentType, forHTTPHeaderField: "Content-Type")
+        request.httpBody = body
         return self
     }
     

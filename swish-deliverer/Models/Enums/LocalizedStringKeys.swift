@@ -45,5 +45,8 @@ enum LocalizedStringKeys: String {
     case unknow_distance
     case tour_finished
     case tour_in_progress
+    case username
+    case birthday
+    case email
     
 }

@@ -34,3 +34,6 @@
 "delivered" = "Delivered";
 "unknow_distance" = "Unknow distance";
 "no_parcels" = "You have no delivery at the moment\nSo take a break 🙂";
+"username" = "Username";
+"birthday" = "Birthday";
+"email" = "E-mail address";

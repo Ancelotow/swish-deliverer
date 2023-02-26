@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AccountViewController" customModule="swish_deliverer" customModuleProvider="target">
+            <connections>
+                <outlet property="labelBirthday" destination="HZ7-C0-vJv" id="Jq4-ql-GCS"/>
+                <outlet property="labelEmail" destination="5Ss-Rt-pOn" id="U45-99-9d7"/>
+                <outlet property="labelFirstname" destination="PLN-IP-1lD" id="Mto-hx-fhO"/>
+                <outlet property="labelLastname" destination="eAT-wi-RE4" id="EyO-4I-ewd"/>
+                <outlet property="labelUsername" destination="tlf-gJ-WNz" id="4dj-MJ-t3u"/>
+                <outlet property="profileImage" destination="u8S-m3-iCG" id="7wA-4h-2Ej"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_default" translatesAutoresizingMaskIntoConstraints="NO" id="u8S-m3-iCG">
+                    <rect key="frame" x="96.666666666666686" y="69" width="200" height="200"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="200" id="6DI-JI-b1x"/>
+                        <constraint firstAttribute="height" constant="200" id="vum-x1-yrM"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="M. DUPONT" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eAT-wi-RE4">
+                    <rect key="frame" x="120" y="279" width="153" height="33.666666666666686"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jean" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PLN-IP-1lD">
+                    <rect key="frame" x="167" y="317.66666666666669" width="59" height="34"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="BZy-Jg-j1V">
+                    <rect key="frame" x="5" y="372.66666666666669" width="40" height="48.666666666666686"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="cNj-l4-Q4O"/>
+                        <constraint firstAttribute="height" constant="50" id="k1O-Uo-DI1"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username: Coucou" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tlf-gJ-WNz">
+                    <rect key="frame" x="50" y="386.33333333333331" width="147" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="birthday.cake.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="qb5-VJ-ku8">
+                    <rect key="frame" x="5" y="431.33333333333337" width="40" height="40.666666666666686"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="2cG-Um-STe"/>
+                        <constraint firstAttribute="height" constant="40" id="jeR-ap-ruf"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BIrthday: 20/01/2022" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZ7-C0-vJv">
+                    <rect key="frame" x="50" y="441.33333333333331" width="160" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mail" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6sP-vt-fVi">
+                    <rect key="frame" x="5" y="483.33333333333337" width="40" height="37"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="cOW-Ac-8Kf"/>
+                        <constraint firstAttribute="height" constant="40" id="soY-uc-u8Z"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="E-Mail: test@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ss-Rt-pOn">
+                    <rect key="frame" x="50" y="491.33333333333331" width="180" height="20.999999999999943"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="BZy-Jg-j1V" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="0Zb-cZ-7Zx"/>
+                <constraint firstItem="5Ss-Rt-pOn" firstAttribute="leading" secondItem="6sP-vt-fVi" secondAttribute="trailing" constant="5" id="0fr-ih-fPE"/>
+                <constraint firstItem="u8S-m3-iCG" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="1Bh-oz-2i5"/>
+                <constraint firstItem="6sP-vt-fVi" firstAttribute="top" secondItem="qb5-VJ-ku8" secondAttribute="bottom" constant="10" id="1Yw-to-up3"/>
+                <constraint firstItem="u8S-m3-iCG" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="6Dg-28-6h1"/>
+                <constraint firstItem="eAT-wi-RE4" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="6kj-yU-98f"/>
+                <constraint firstItem="qb5-VJ-ku8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="8Y6-8X-6hc"/>
+                <constraint firstItem="BZy-Jg-j1V" firstAttribute="top" secondItem="PLN-IP-1lD" secondAttribute="bottom" constant="20" id="Hdb-PQ-BuN"/>
+                <constraint firstItem="tlf-gJ-WNz" firstAttribute="leading" secondItem="BZy-Jg-j1V" secondAttribute="trailing" constant="5" id="Mv7-G8-WO8"/>
+                <constraint firstItem="qb5-VJ-ku8" firstAttribute="top" secondItem="BZy-Jg-j1V" secondAttribute="bottom" constant="10" id="VBe-pf-F0z"/>
+                <constraint firstItem="eAT-wi-RE4" firstAttribute="top" secondItem="u8S-m3-iCG" secondAttribute="bottom" constant="10" id="YPV-RU-JCH"/>
+                <constraint firstItem="HZ7-C0-vJv" firstAttribute="leading" secondItem="qb5-VJ-ku8" secondAttribute="trailing" constant="5" id="Ypo-qX-mY1"/>
+                <constraint firstItem="PLN-IP-1lD" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="eYL-TD-orR"/>
+                <constraint firstItem="6sP-vt-fVi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="5" id="iep-X3-bnj"/>
+                <constraint firstItem="tlf-gJ-WNz" firstAttribute="centerY" secondItem="BZy-Jg-j1V" secondAttribute="centerY" id="ikE-8C-fD3"/>
+                <constraint firstItem="HZ7-C0-vJv" firstAttribute="centerY" secondItem="qb5-VJ-ku8" secondAttribute="centerY" id="jv2-9H-i1F"/>
+                <constraint firstItem="PLN-IP-1lD" firstAttribute="top" secondItem="eAT-wi-RE4" secondAttribute="bottom" constant="5" id="jvY-15-hkF"/>
+                <constraint firstItem="5Ss-Rt-pOn" firstAttribute="centerY" secondItem="6sP-vt-fVi" secondAttribute="centerY" id="pgd-F5-EhU"/>
+            </constraints>
+            <point key="canvasLocation" x="140" y="20"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="birthday.cake.fill" catalog="system" width="128" height="115"/>
+        <image name="mail" catalog="system" width="128" height="93"/>
+        <image name="person.circle" catalog="system" width="128" height="123"/>
+        <image name="profile_default" width="1280" height="1280"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
