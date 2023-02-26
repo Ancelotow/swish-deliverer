@@ -272,7 +272,7 @@ extension TourViewController: UITableViewDataSource, UITableViewDelegate {
             let myLocation = CLLocation(latitude: self.coordinate.latitude, longitude: self.coordinate.longitude)
             let parcelLocation = CLLocation(latitude: parcelCoordinate.coordinate.latitude, longitude: parcelCoordinate.coordinate.longitude)
             let distance = myLocation.distance(from: parcelLocation)
-            if distance > 3000000000 {
+            if distance > 200 {
                 self.showErrorAlertWithMessage(NSLocalizedString(LocalizedStringKeys.distance_delivery_invalid.rawValue, comment: ""))
                 return
             }
